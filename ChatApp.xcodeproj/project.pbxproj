@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A96FF7912759F811000E139E /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96FF7902759F811000E139E /* UserDefaults.swift */; };
 		A970742E2759E3D800302141 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A970742D2759E3D800302141 /* AppDelegate.swift */; };
 		A97074322759E3D800302141 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97074312759E3D800302141 /* ViewController.swift */; };
 		A97074352759E3D800302141 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A97074332759E3D800302141 /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		2F6125B89A75A3F1C579CD7C /* Pods-ChatApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatApp.release.xcconfig"; path = "Target Support Files/Pods-ChatApp/Pods-ChatApp.release.xcconfig"; sourceTree = "<group>"; };
+		A96FF7902759F811000E139E /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		A970742A2759E3D800302141 /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A970742D2759E3D800302141 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A97074312759E3D800302141 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -48,6 +50,14 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		A96FF78F2759F7F1000E139E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A96FF7902759F811000E139E /* UserDefaults.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		A97074212759E3D800302141 = {
 			isa = PBXGroup;
 			children = (
@@ -75,6 +85,7 @@
 				A97074362759E3DC00302141 /* Assets.xcassets */,
 				A97074382759E3DC00302141 /* LaunchScreen.storyboard */,
 				A97074332759E3D800302141 /* Main.storyboard */,
+				A96FF78F2759F7F1000E139E /* Extensions */,
 				A96FF78C2759EA73000E139E /* Resources */,
 			);
 			path = ChatApp;
@@ -199,6 +210,7 @@
 			files = (
 				A97074322759E3D800302141 /* ViewController.swift in Sources */,
 				A970742E2759E3D800302141 /* AppDelegate.swift in Sources */,
+				A96FF7912759F811000E139E /* UserDefaults.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
