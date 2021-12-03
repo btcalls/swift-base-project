@@ -18,7 +18,7 @@ extension UserDefaults {
     /// Returns a codable object `T` with the given key.
     /// - Returns: Optional `T` object.
     func getCodable<T: Codable>(forKey key: Keys) -> T? {
-        guard let data = self.object(forKey: key.rawValue) as? Data else {
+        guard let data = object(forKey: key.rawValue) as? Data else {
             return nil
         }
 
@@ -31,7 +31,7 @@ extension UserDefaults {
             return
         }
 
-        self.set(data, forKey: key.rawValue)
+        set(data, forKey: key.rawValue)
     }
 
 }

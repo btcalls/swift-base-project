@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		A96FF7912759F811000E139E /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96FF7902759F811000E139E /* UserDefaults.swift */; };
+		A96FF7942759FEFB000E139E /* SLGlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96FF7932759FEFB000E139E /* SLGlobalFunctions.swift */; };
+		A96FF7962759FFD3000E139E /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96FF7952759FFD3000E139E /* UIDevice.swift */; };
+		A96FF798275A011B000E139E /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96FF797275A011B000E139E /* UIApplication.swift */; };
+		A96FF79A275A0535000E139E /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96FF799275A0535000E139E /* Bundle.swift */; };
 		A970742E2759E3D800302141 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A970742D2759E3D800302141 /* AppDelegate.swift */; };
 		A97074322759E3D800302141 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97074312759E3D800302141 /* ViewController.swift */; };
 		A97074352759E3D800302141 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A97074332759E3D800302141 /* Main.storyboard */; };
@@ -19,6 +23,10 @@
 /* Begin PBXFileReference section */
 		2F6125B89A75A3F1C579CD7C /* Pods-ChatApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatApp.release.xcconfig"; path = "Target Support Files/Pods-ChatApp/Pods-ChatApp.release.xcconfig"; sourceTree = "<group>"; };
 		A96FF7902759F811000E139E /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		A96FF7932759FEFB000E139E /* SLGlobalFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLGlobalFunctions.swift; sourceTree = "<group>"; };
+		A96FF7952759FFD3000E139E /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
+		A96FF797275A011B000E139E /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
+		A96FF799275A0535000E139E /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		A970742A2759E3D800302141 /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A970742D2759E3D800302141 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A97074312759E3D800302141 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -53,9 +61,20 @@
 		A96FF78F2759F7F1000E139E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				A96FF799275A0535000E139E /* Bundle.swift */,
+				A96FF797275A011B000E139E /* UIApplication.swift */,
+				A96FF7952759FFD3000E139E /* UIDevice.swift */,
 				A96FF7902759F811000E139E /* UserDefaults.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A96FF7922759FEE0000E139E /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A96FF7932759FEFB000E139E /* SLGlobalFunctions.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		A97074212759E3D800302141 = {
@@ -87,6 +106,7 @@
 				A97074332759E3D800302141 /* Main.storyboard */,
 				A96FF78F2759F7F1000E139E /* Extensions */,
 				A96FF78C2759EA73000E139E /* Resources */,
+				A96FF7922759FEE0000E139E /* Utils */,
 			);
 			path = ChatApp;
 			sourceTree = "<group>";
@@ -208,8 +228,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A96FF798275A011B000E139E /* UIApplication.swift in Sources */,
+				A96FF79A275A0535000E139E /* Bundle.swift in Sources */,
+				A96FF7962759FFD3000E139E /* UIDevice.swift in Sources */,
 				A97074322759E3D800302141 /* ViewController.swift in Sources */,
 				A970742E2759E3D800302141 /* AppDelegate.swift in Sources */,
+				A96FF7942759FEFB000E139E /* SLGlobalFunctions.swift in Sources */,
 				A96FF7912759F811000E139E /* UserDefaults.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -330,6 +354,7 @@
 				SL_DEVICE_TOKEN = TEST1;
 				SL_SERVICE_URL = "$(SL_BASE_URL)$(SL_SHARED_URL)";
 				SL_SHARED_URL = "/QA/Chat/1.2/\n";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = QA;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -2,6 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>SL_SERVICE_URL</key>
+	<string>$(SL_SERVICE_URL)</string>
+	<key>SL_DEVICE_TOKEN</key>
+	<string>$(SL_DEVICE_TOKEN)</string>
+	<key>SL_APP_VERSION</key>
+	<string>$(SL_APP_VERSION)</string>
+	<key>SL_APP_CODE</key>
+	<string>$(SL_APP_CODE)</string>
 	<key>CFBundleDisplayName</key>
 	<string>$(SL_APP_NAME)</string>
 </dict>
