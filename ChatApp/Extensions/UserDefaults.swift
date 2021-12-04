@@ -12,12 +12,21 @@ extension UserDefaults {
 
     // TODO: Define keys here
     enum Keys: String {
-        case test = "test"
+        case appSid = "appSid"
+    }
+
+    func get<T>(_ key: Keys) -> T? {
+        return value(forKey: key.rawValue) as? T
+    }
+
+    func set(_ value: Any, forKey key: Keys) {
+        set(value, forKey: key.rawValue)
+        synchronize()
     }
 
     /// Returns a codable object `T` with the given key.
     /// - Returns: Optional `T` object.
-    func getCodable<T: Codable>(forKey key: Keys) -> T? {
+    func getCodable<T: Codable>(_ key: Keys) -> T? {
         guard let data = object(forKey: key.rawValue) as? Data else {
             return nil
         }
@@ -32,6 +41,7 @@ extension UserDefaults {
         }
 
         set(data, forKey: key.rawValue)
+        synchronize()
     }
 
 }

@@ -14,15 +14,30 @@ extension Bundle {
     // MARK: User-Defined Build Settings
 
     var appCode: String {
-        return object(forInfoDictionaryKey: "SL_APP_CODE") as! String
+        let value = object(forInfoDictionaryKey: "SL_APP_CODE") as! String
+
+        return value.trimmingCharacters(in: .whitespacesAndNewlines)
     }
     var appVersion: String {
-        return object(forInfoDictionaryKey: "SL_APP_VERSION") as! String
+        let value = object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+
+        return value.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+    var baseURL: String {
+        let value = object(forInfoDictionaryKey: "SL_BASE_URL") as! String
+
+        return value.trimmingCharacters(in: .whitespacesAndNewlines)
     }
     var deviceToken: String {
-        let token = object(forInfoDictionaryKey: "SL_DEVICE_TOKEN") as! String
+        var token = object(forInfoDictionaryKey: "SL_DEVICE_TOKEN") as! String
+        token = token.trimmingCharacters(in: .whitespacesAndNewlines)
 
         return token.isEmpty ? UIDevice.current.name : token
+    }
+    var displayAppVersion: String {
+        let value = object(forInfoDictionaryKey: "SL_DISPLAY_APP_VERSION") as! String
+
+        return value.trimmingCharacters(in: .whitespacesAndNewlines)
     }
     var isProduction: Bool {
         #if DEBUG
@@ -33,20 +48,21 @@ extension Bundle {
         return true
         #endif
     }
-    var serviceURL: URL {
-        let url = object(forInfoDictionaryKey: "SL_SERVICE_URL") as! String
+    var sharedURL: String {
+        let value = object(forInfoDictionaryKey: "SL_SHARED_URL") as! String
 
-        return URL(string: url)!
+        return value.trimmingCharacters(in: .whitespacesAndNewlines)
     }
 
     /// Prints to console the current app configuration.
     func printConfig() {
         printDebug("""
 
-            App code: \(appCode)
-            App version: \(appVersion)
-            Device token: \(deviceToken)
-            Service URL: \(serviceURL.absoluteString)
+        App code: \(appCode)
+        App version: \(appVersion)
+        Device token: \(deviceToken)
+        Base URL: \(baseURL)
+        Shared URL: \(sharedURL)
         """)
     }
 

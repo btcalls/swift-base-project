@@ -10,6 +10,8 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    static let shared = UIApplication.shared.delegate as! AppDelegate
+
     var window: UIWindow?
 
     private var topMostController: UIViewController? {
@@ -27,8 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        Bundle.main.printConfig()
-
         return true
     }
 
@@ -46,9 +46,21 @@ extension AppDelegate {
 
     /// Presents an alert dialog at the topmost controller.
     /// - Parameters:
-    ///   - title: The title to display.
-    ///   - message: The message to display.
-    func presentDialog(_ title: String, message: String) {
+    ///   - type: Type of dialog to display.
+    func presentDialog(type: DialogType) {
+        var title = ""
+        var message = ""
+
+        switch type {
+        case .custom(let t, let m):
+            title = t
+            message = m
+
+        case .error(let error):
+            title = "Oops!"
+            message = error.localizedDescription
+        }
+
         let alert = UIAlertController(title: title,
                                       message: message,
                                       preferredStyle: .alert)
