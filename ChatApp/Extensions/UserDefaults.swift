@@ -24,8 +24,11 @@ extension UserDefaults {
         synchronize()
     }
 
-    /// Returns a codable object `T` with the given key.
-    /// - Returns: Optional `T` object.
+    func remove(_ key: Keys) {
+        removeObject(forKey: key.rawValue)
+        synchronize()
+    }
+
     func getCodable<T: Codable>(_ key: Keys) -> T? {
         guard let data = object(forKey: key.rawValue) as? Data else {
             return nil
@@ -34,7 +37,6 @@ extension UserDefaults {
         return try? JSONDecoder().decode(T.self, from: data)
     }
 
-    /// Stores a codable object.
     func setCodable<T: Codable>(_ object: T, forKey key: Keys) {
         guard let data = try? JSONEncoder().encode(object) else {
             return

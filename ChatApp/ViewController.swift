@@ -7,9 +7,9 @@
 
 import UIKit
 
-struct ThreadsResponse: Codable {
+struct ThreadsResponse: APIResponseDecodable {
 
-    var acknowledge: Int
+    var acknowledge: Acknowledge
     var fullMessage: String
     var message: String
     var threads: [ChatThread]
@@ -32,7 +32,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
-        login()
+        if SLAPIClient.shared.isAuthenticated {
+            AppDelegate.shared.logout()
+        } else {
+            login()
+        }
     }
 
     private func login() {

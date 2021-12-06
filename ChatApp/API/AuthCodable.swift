@@ -8,16 +8,6 @@
 
 import Foundation
 
-enum Acknowledge: Int, Codable {
-
-    case success = 1
-    case failure = 0
-    case logout = 3
-    case update = 5
-    case logoutAndUpdate = 6
-
-}
-
 struct LoginRequest: FormEncodable {
 
     var appCode: String = Bundle.main.appCode
@@ -36,7 +26,7 @@ struct LoginRequest: FormEncodable {
 
 }
 
-struct LoginResponse: Decodable, SLAPIResponse {
+struct LoginResponse: APIResponseDecodable {
 
     var acknowledge: Acknowledge
     var fullMessage: String

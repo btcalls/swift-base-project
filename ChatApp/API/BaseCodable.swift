@@ -8,9 +8,19 @@
 
 import Foundation
 
+enum Acknowledge: Int, Codable {
+
+    case success = 1
+    case failure = 0
+    case logout = 3
+    case update = 5
+    case logoutAndUpdate = 6
+
+}
+
 protocol FormEncodable: Encodable {}
 
-protocol SLAPIResponse {
+protocol APIResponseDecodable: Decodable {
 
     var acknowledge: Acknowledge { get set }
     var fullMessage: String { get set }
@@ -18,7 +28,7 @@ protocol SLAPIResponse {
 
 }
 
-extension SLAPIResponse {
+extension APIResponseDecodable {
 
     var responseMessage: String {
         return fullMessage.isEmpty ? message : fullMessage
@@ -26,16 +36,24 @@ extension SLAPIResponse {
 
 }
 
+struct BaseAPIResponse: APIResponseDecodable {
+
+    var acknowledge: Acknowledge
+    var fullMessage: String
+    var message: String
+
+}
+
 struct AppSidRequest: FormEncodable {
 
     var appSid: String
 
-    static var defaultValue: Self {
+    init() {
         guard let appSid: String = UserDefaults.standard.get(.appSid) else {
             preconditionFailure("No valid appSid found.")
         }
 
-        return .init(appSid: appSid)
+        self.appSid = appSid
     }
 
 }

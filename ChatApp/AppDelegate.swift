@@ -39,8 +39,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate {
 
     func logout(toUpdate: Bool = false) {
-        // TODO: Logout
-        printDebug("Logout")
+        UserDefaults.standard.remove(.appSid)
+        // TODO: Handle logout; Redirect to Login
+
+        // TODO: If logout endpoint is available
+//        SLAPIClient.shared.post(type: BaseAPIResponse.self,
+//                                endpoint: .logout,
+//                                body: AppSidRequest.init()) { result in
+//            switch result {
+//            case .success(_):
+//                // TODO: Handle logout; Redirect to Login
+//                break
+//
+//            case .failure(_):
+//                break
+//            }
+//        }
     }
 
     func updateApp() {
@@ -53,7 +67,8 @@ extension AppDelegate {
         \(Bundle.main.appName) will be updated automatically.
         """
 
-        presentDialog(type: .custom(title: title, message: message), buttonTitle: "Update")
+        presentDialog(type: .custom(title: title, message: message),
+                      buttonTitle: "Update")
     }
 
 }
@@ -73,7 +88,7 @@ extension AppDelegate {
     ///   - type: Type of dialog to display.
     ///   - buttonTitle: Title to display on the action.
     ///   - cancelTitle: Title to display on the cancel action.
-    func presentDialog(type: DialogType, buttonTitle: String = "OK") {
+    func presentDialog(type: SLDialogType, buttonTitle: String = "OK") {
         var title = ""
         var message = ""
 

@@ -11,73 +11,43 @@
 import UIKit
 
 enum HTTPMethod {
-
     case get
     case post(Data?)
-
-}
-
-enum APIError: LocalizedError {
-
-    case decodable
-    case network
-    case noData
-    case request(Error)
-    case response(String)
-
-}
-
-extension APIError {
-
-    var errorDescription: String? {
-        switch self {
-        case .decodable:
-            return NSLocalizedString("Failed decoding provided data.",
-                                     comment: "Decode Failure")
-
-        case .network:
-            return NSLocalizedString("Network is currently offline.",
-                                     comment: "Offline Network")
-
-        case .noData:
-            return NSLocalizedString("No data available.",
-                                     comment: "No Data")
-
-        case .request(let error):
-            return error.localizedDescription
-
-        case .response(let message):
-            return NSLocalizedString(message, comment: "Response Error")
-        }
-    }
-
 }
 
 class SLAPIClient: NSObject {
 
     static let shared: SLAPIClient = SLAPIClient()
 
+    var isAuthenticated: Bool {
+        guard let appSid: String = UserDefaults.standard.get(.appSid) else {
+            return false
+        }
+
+        return !appSid.isEmpty
+    }
+
 }
 
 extension SLAPIClient {
 
-    func get<R: Decodable>(
+    func get<R: APIResponseDecodable>(
         type: R.Type,
         endpoint: Endpoint,
-        completion: @escaping(Swift.Result<R, APIError>) -> Void
-    ) where R: SLAPIResponse {
+        completion: @escaping(Swift.Result<R, SLError>) -> Void
+    ) {
         request(type: type,
                 endpoint: endpoint,
                 method: .get,
                 completion: completion)
     }
 
-    func post<R: Decodable, F: FormEncodable>(
+    func post<R: APIResponseDecodable, F: FormEncodable>(
         type: R.Type,
         endpoint: Endpoint,
         body: F?,
-        completion: @escaping(Swift.Result<R, APIError>) -> Void
-    ) where R: SLAPIResponse {
+        completion: @escaping(Swift.Result<R, SLError>) -> Void
+    ) {
         var data: Data?
 
         if let body = body {
@@ -90,14 +60,12 @@ extension SLAPIClient {
                 completion: completion)
     }
 
-    private func request<T: Decodable>(
+    private func request<T: APIResponseDecodable>(
         type: T.Type,
         endpoint: Endpoint,
         method: HTTPMethod,
-        completion: @escaping(Swift.Result<T, APIError>) -> Void
-    ) where T: SLAPIResponse {
-        printDebug("Sending request to \(endpoint.url.absoluteString)")
-
+        completion: @escaping(Swift.Result<T, SLError>) -> Void
+    ) {
         var request = URLRequest(url: endpoint.url)
 
         switch method {
@@ -122,55 +90,96 @@ extension SLAPIClient {
             }
         }
 
+        printDebug("Sending request to \(endpoint.url.absoluteString)")
+
         let session = URLSession(configuration: .default)
         let dataTask = session.dataTask(with: request) { data, response, error in
             // Handle error
             if let error = error {
-                completion(.failure(.request(error)))
-                AppDelegate.shared.presentDialog(type: .error(error))
+                let customError: SLError = .custom(error.localizedDescription)
+
+                printDebug("Error: \(customError.localizedDescription)")
+                completion(.failure(customError))
+                AppDelegate.shared.presentDialog(type: .error(customError))
 
                 return
             }
 
             guard let data = data, response != nil else {
-                completion(.failure(.noData))
+                completion(.failure(.network(.noData)))
+
+                return
+            }
+
+            // Check HTTP response
+            let httpResponse = response as! HTTPURLResponse
+            var httpError: SLError?
+
+            switch httpResponse.statusCode {
+            case 200...299:
+                fallthrough
+
+            case 401...500:
+                httpError = .network(.authError)
+
+            case 501...599:
+                httpError = .network(.badRequest)
+
+            default:
+                httpError = .network(.failed)
+            }
+
+            if let httpError = httpError {
+                printDebug("Error: \(httpError.localizedDescription)")
+                completion(.failure(httpError))
 
                 return
             }
 
             // Debug response
             if let json = try? data.toJSON() {
-                printDebug("Response: \(json)")
+                printDebug("JSON Response: \(json)")
             }
 
             // Decode response
             guard let object = try! CodableTransform.toCodable(T.self, data: data) else {
-                completion(.failure(.decodable))
+                let networkError: SLError = .network(.decodeError)
+
+                printDebug("Error: \(networkError.localizedDescription)")
+                completion(.failure(networkError))
 
                 return
             }
 
             DispatchQueue.main.async {
                 // Handle acknowledge
-                switch object.acknowledge {
-                case .success:
+                if object.acknowledge == .success {
                     completion(.success(object))
 
+                    return
+                }
+
+                let responseError: SLError = .custom(object.responseMessage)
+
+                switch object.acknowledge {
                 case .failure:
-                    completion(.failure(.response(object.responseMessage)))
+                    AppDelegate.shared.presentDialog(type: .error(responseError))
 
                 case .logout:
                     AppDelegate.shared.logout()
-                    completion(.failure(.response(object.responseMessage)))
 
                 case .update:
                     AppDelegate.shared.updateApp()
-                    completion(.failure(.response(object.responseMessage)))
 
                 case .logoutAndUpdate:
                     AppDelegate.shared.logout(toUpdate: true)
-                    completion(.failure(.response(object.responseMessage)))
+
+                default:
+                    break
                 }
+
+                printDebug("Error: \(responseError)")
+                completion(.failure(responseError))
             }
         }
 

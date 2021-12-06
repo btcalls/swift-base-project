@@ -52,6 +52,9 @@ extension Endpoint {
     static var login: Self {
         return Endpoint(path: "/Login")
     }
+    static var logout: Self {
+        return Endpoint(path: "/Logout")
+    }
     static var threads: Self {
         return Endpoint(path: "/GetAllThread")
     }
