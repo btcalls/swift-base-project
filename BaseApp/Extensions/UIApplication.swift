@@ -10,8 +10,6 @@ import UIKit
 
 extension UIApplication {
 
-    /// Tries to open URL from a given string.
-    /// - Parameter urlString: The URL string to open.
     func open(_ urlString: String) {
         guard let url = URL(string: urlString) else {
             return
