@@ -1,12 +1,10 @@
 //
-//  SLAPIClient.swift
-//  ChatApp
+//  APIClient.swift
+//  BaseApp
 //
 //  Created by Jason Jon E. Carreos on 12/3/21.
-//  Copyright © 2021 Slomins. All rights reserved.
+//  Copyright © 2021 BTCalls. All rights reserved.
 //
-
-// TODO: base API response
 
 import UIKit
 
@@ -15,9 +13,9 @@ enum HTTPMethod {
     case post(Data?)
 }
 
-class SLAPIClient: NSObject {
+class APIClient: NSObject {
 
-    static let shared: SLAPIClient = SLAPIClient()
+    static let shared: APIClient = APIClient()
 
     var isAuthenticated: Bool {
         guard let appSid: String = UserDefaults.standard.get(.appSid) else {
@@ -30,7 +28,7 @@ class SLAPIClient: NSObject {
     func get<R: APIResponseDecodable>(
         type: R.Type,
         endpoint: Endpoint,
-        completion: @escaping(Swift.Result<R, SLError>) -> Void
+        completion: @escaping(Swift.Result<R, CustomError>) -> Void
     ) {
         request(type: type,
                 endpoint: endpoint,
@@ -42,7 +40,7 @@ class SLAPIClient: NSObject {
         type: R.Type,
         endpoint: Endpoint,
         body: F?,
-        completion: @escaping(Swift.Result<R, SLError>) -> Void
+        completion: @escaping(Swift.Result<R, CustomError>) -> Void
     ) {
         var data: Data?
 
@@ -60,7 +58,7 @@ class SLAPIClient: NSObject {
         type: T.Type,
         endpoint: Endpoint,
         method: HTTPMethod,
-        completion: @escaping(Swift.Result<T, SLError>) -> Void
+        completion: @escaping(Swift.Result<T, CustomError>) -> Void
     ) {
         var request = URLRequest(url: endpoint.url)
 
@@ -93,7 +91,7 @@ class SLAPIClient: NSObject {
         let dataTask = session.dataTask(with: request) { data, response, error in
             // Handle error
             if let error = error {
-                let customError: SLError = .custom(error.localizedDescription)
+                let customError: CustomError = .custom(error.localizedDescription)
 
                 printDebug("Error: \(customError.localizedDescription)")
                 completion(.failure(customError))
@@ -109,24 +107,7 @@ class SLAPIClient: NSObject {
             }
 
             // Check HTTP response
-            let httpResponse = response as! HTTPURLResponse
-            var httpError: SLError?
-
-            switch httpResponse.statusCode {
-            case 200...299:
-                httpError = nil
-
-            case 401...500:
-                httpError = .network(.authError)
-
-            case 501...599:
-                httpError = .network(.badRequest)
-
-            default:
-                httpError = .network(.failed)
-            }
-
-            if let httpError = httpError {
+            if let httpError = self.httpError(response) {
                 printDebug("HTTP Error: \(httpError.localizedDescription)")
                 completion(.failure(httpError))
 
@@ -140,7 +121,7 @@ class SLAPIClient: NSObject {
 
             // Decode response
             guard let object = try! CodableTransform.toCodable(T.self, data: data) else {
-                let networkError: SLError = .network(.decodeError)
+                let networkError: CustomError = .network(.decodeError)
 
                 printDebug("Network Error: \(networkError.localizedDescription)")
                 completion(.failure(networkError))
@@ -156,7 +137,7 @@ class SLAPIClient: NSObject {
                     return
                 }
 
-                let responseError: SLError = .custom(object.responseMessage)
+                let responseError: CustomError = .custom(object.responseMessage)
 
                 switch object.acknowledge {
                 case .failure:
@@ -181,6 +162,26 @@ class SLAPIClient: NSObject {
         }
 
         dataTask.resume()
+    }
+
+    private func httpError(_ response: URLResponse?) -> CustomError? {
+        guard let response = response as? HTTPURLResponse else {
+            return .network(.failed)
+        }
+
+        switch response.statusCode {
+        case 200...299:
+            return nil
+
+        case 401...500:
+            return .network(.authError)
+
+        case 501...599:
+            return .network(.badRequest)
+
+        default:
+            return .network(.failed)
+        }
     }
 
 }

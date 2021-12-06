@@ -1,9 +1,9 @@
 //
 //  Bundle.swift
-//  ChatApp
+//  BaseApp
 //
 //  Created by Jason Jon E. Carreos on 12/3/21.
-//  Copyright © 2021 Slomins. All rights reserved.
+//  Copyright © 2021 BTCalls. All rights reserved.
 //
 
 import Foundation
@@ -14,7 +14,7 @@ extension Bundle {
     // MARK: User-Defined Build Settings
 
     var appCode: String {
-        let value = object(forInfoDictionaryKey: "SL_APP_CODE") as! String
+        let value = object(forInfoDictionaryKey: "UD_APP_CODE") as! String
 
         return value.trimmingCharacters(in: .whitespacesAndNewlines)
     }
@@ -29,18 +29,18 @@ extension Bundle {
         return value.trimmingCharacters(in: .whitespacesAndNewlines)
     }
     var baseURL: String {
-        let value = object(forInfoDictionaryKey: "SL_BASE_URL") as! String
+        let value = object(forInfoDictionaryKey: "UD_BASE_URL") as! String
 
         return value.trimmingCharacters(in: .whitespacesAndNewlines)
     }
     var deviceToken: String {
-        var token = object(forInfoDictionaryKey: "SL_DEVICE_TOKEN") as! String
+        var token = object(forInfoDictionaryKey: "UD_DEVICE_TOKEN") as! String
         token = token.trimmingCharacters(in: .whitespacesAndNewlines)
 
         return token.isEmpty ? UIDevice.current.name : token
     }
     var displayAppVersion: String {
-        let value = object(forInfoDictionaryKey: "SL_DISPLAY_APP_VERSION") as! String
+        let value = object(forInfoDictionaryKey: "UD_DISPLAY_APP_VERSION") as! String
 
         return value.trimmingCharacters(in: .whitespacesAndNewlines)
     }
@@ -54,7 +54,7 @@ extension Bundle {
         #endif
     }
     var sharedURL: String {
-        let value = object(forInfoDictionaryKey: "SL_SHARED_URL") as! String
+        let value = object(forInfoDictionaryKey: "UD_SHARED_URL") as! String
 
         return value.trimmingCharacters(in: .whitespacesAndNewlines)
     }

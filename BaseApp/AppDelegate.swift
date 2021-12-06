@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  ChatApp
+//  BaseApp
 //
 //  Created by Jason Jon E. Carreos on 12/3/21.
 //
@@ -43,18 +43,18 @@ extension AppDelegate {
         // TODO: Handle logout; Redirect to Login
 
         // TODO: If logout endpoint is available
-//        SLAPIClient.shared.post(type: BaseAPIResponse.self,
-//                                endpoint: .logout,
-//                                body: AppSidRequest.init()) { result in
-//            switch result {
-//            case .success(_):
-//                // TODO: Handle logout; Redirect to Login
-//                break
-//
-//            case .failure(_):
-//                break
-//            }
-//        }
+        APIClient.shared.post(type: BaseAPIResponse.self,
+                              endpoint: .logout,
+                              body: AppSidRequest.init()) { result in
+            switch result {
+            case .success(_):
+                // TODO: Handle logout; Redirect to Login
+                break
+
+            case .failure(_):
+                break
+            }
+        }
     }
 
     func updateApp() {
@@ -87,7 +87,7 @@ extension AppDelegate {
     /// - Parameters:
     ///   - type: Type of dialog to display.
     ///   - buttonTitle: Title to display on the action.
-    func presentDialog(type: SLDialogType, buttonTitle: String = "OK") {
+    func presentDialog(type: DialogType, buttonTitle: String = "OK") {
         var title = ""
         var message = ""
 

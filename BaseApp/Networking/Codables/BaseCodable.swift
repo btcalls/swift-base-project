@@ -1,9 +1,9 @@
 //
 //  BaseCodable.swift
-//  ChatApp
+//  BaseApp
 //
 //  Created by Jason Jon E. Carreos on 12/4/21.
-//  Copyright © 2021 Slomins. All rights reserved.
+//  Copyright © 2021 BTCalls. All rights reserved.
 //
 
 import Foundation
@@ -16,6 +16,7 @@ enum Acknowledge: Int, Codable {
     case logoutAndUpdate = 6
 }
 
+/// Protocol for decodable instances used to encapsulate an API response.
 protocol APIResponseDecodable: Decodable {
 
     var acknowledge: Acknowledge { get set }
@@ -32,6 +33,7 @@ extension APIResponseDecodable {
 
 }
 
+/// Struct for common API response data.
 struct BaseAPIResponse: APIResponseDecodable {
 
     var acknowledge: Acknowledge
@@ -40,6 +42,7 @@ struct BaseAPIResponse: APIResponseDecodable {
 
 }
 
+/// Protocol for API or form encodables to be used as parameters or HTTP body data.
 protocol FormEncodable: Encodable {}
 
 struct AppSidRequest: FormEncodable {

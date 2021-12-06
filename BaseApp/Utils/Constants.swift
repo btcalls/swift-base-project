@@ -1,24 +1,24 @@
 //
-//  SLConstants.swift
-//  ChatApp
+//  Constants.swift
+//  BaseApp
 //
 //  Created by Jason Jon E. Carreos on 12/6/21.
-//  Copyright © 2021 Slomins. All rights reserved.
+//  Copyright © 2021 BTCalls. All rights reserved.
 //
 
 import Foundation
 
-enum SLDialogType {
+enum DialogType {
     case custom(title: String, message: String)
-    case error(SLError)
+    case error(CustomError)
 }
 
-enum SLError: LocalizedError {
-    case network(SLNetworkResponse)
+enum CustomError: LocalizedError {
+    case network(NetworkResponse)
     case custom(String)
 }
 
-enum SLNetworkResponse: String {
+enum NetworkResponse: String {
     case authError = "Request needs to be authenticated."
     case badRequest = "Bad request."
     case failed = "Network request failed."
@@ -27,7 +27,7 @@ enum SLNetworkResponse: String {
     case decodeError = "Could not decode response."
 }
 
-extension SLError {
+extension CustomError {
 
     var errorDescription: String? {
         switch self {

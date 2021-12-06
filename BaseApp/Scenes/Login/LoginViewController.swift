@@ -1,17 +1,17 @@
 //
-//  SLLoginViewController.swift
-//  ChatApp
+//  LoginViewController.swift
+//  BaseApp
 //
 //  Created by Jason Jon E. Carreos on 12/3/21.
 //
 
 import UIKit
 
-class SLLoginViewController: UIViewController, SLFormViewController {
+class LoginViewController: UIViewController, ViewController {
 
-    typealias ViewModel = SLLoginViewModel
+    typealias ViewModel = LoginViewModel
 
-    var viewModel: SLLoginViewModel = SLLoginViewModel()
+    var viewModel: LoginViewModel = LoginViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,20 +19,20 @@ class SLLoginViewController: UIViewController, SLFormViewController {
 
         self.viewModel.delegate = self
 
-        if SLAPIClient.shared.isAuthenticated {
+        if APIClient.shared.isAuthenticated {
             // TODO: Redirect to Home
         }
     }
     
 }
 
-extension SLLoginViewController: SLFormViewModelDelegate {
+extension LoginViewController: ViewModelDelegate {
 
     func onSuccess() {
         // TODO: Disable loader; Redirect to Home
     }
 
-    func onError(_ error: SLError) {
+    func onError(_ error: CustomError) {
         // TODO: Disable loader; Re-enable form
     }
 

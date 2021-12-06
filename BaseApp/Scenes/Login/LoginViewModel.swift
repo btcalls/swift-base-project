@@ -1,20 +1,20 @@
 //
-//  SLLoginViewModel.swift
-//  ChatApp
+//  LoginViewModel.swift
+//  BaseApp
 //
 //  Created by Jason Jon E. Carreos on 12/6/21.
-//  Copyright © 2021 Slomins. All rights reserved.
+//  Copyright © 2021 BTCalls. All rights reserved.
 //
 
 import UIKit
 
-class SLLoginViewModel: SLFormViewModel {
+class LoginViewModel: FormViewModel {
 
     typealias FormParams = LoginRequest
 
-    var delegate: SLFormViewModelDelegate?
+    var delegate: ViewModelDelegate?
 
-    func isFormValid(_ params: LoginRequest) -> SLFormViewModelResponse {
+    func isFormValid(_ params: LoginRequest) -> FormViewModelResponse {
         if params.userName.isEmpty {
             return .error(message: "Username is required.")
         }
@@ -40,7 +40,7 @@ class SLLoginViewModel: SLFormViewModel {
     }
 
     private func login() {
-        SLAPIClient.shared.post(type: LoginResponse.self,
+        APIClient.shared.post(type: LoginResponse.self,
                                 endpoint: .login,
                                 body: LoginRequest.testParams) { [weak self] result in
             switch result {

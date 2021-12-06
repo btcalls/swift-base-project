@@ -8,22 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		2912E8D1379864B0E4B0F08D /* Pods_BaseApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 500D52534CCF8157113DF5A6 /* Pods_BaseApp.framework */; };
-		A92D56FB275DBC460032F1C1 /* SLConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92D56FA275DBC460032F1C1 /* SLConstants.swift */; };
-		A92D5701275DF6B00032F1C1 /* SLProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92D5700275DF6B00032F1C1 /* SLProtocols.swift */; };
+		A92D56FB275DBC460032F1C1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92D56FA275DBC460032F1C1 /* Constants.swift */; };
+		A92D5701275DF6B00032F1C1 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92D5700275DF6B00032F1C1 /* Protocols.swift */; };
 		A96FF7912759F811000E139E /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96FF7902759F811000E139E /* UserDefaults.swift */; };
-		A96FF7942759FEFB000E139E /* SLGlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96FF7932759FEFB000E139E /* SLGlobalFunctions.swift */; };
+		A96FF7942759FEFB000E139E /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96FF7932759FEFB000E139E /* GlobalFunctions.swift */; };
 		A96FF7962759FFD3000E139E /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96FF7952759FFD3000E139E /* UIDevice.swift */; };
 		A96FF798275A011B000E139E /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96FF797275A011B000E139E /* UIApplication.swift */; };
 		A96FF79A275A0535000E139E /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96FF799275A0535000E139E /* Bundle.swift */; };
-		A96FF79F275A13C7000E139E /* SLAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96FF79E275A13C7000E139E /* SLAPIClient.swift */; };
+		A96FF79F275A13C7000E139E /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96FF79E275A13C7000E139E /* APIClient.swift */; };
 		A96FF7A1275A16AB000E139E /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96FF7A0275A16AB000E139E /* Endpoint.swift */; };
 		A96FF7A3275A1FE3000E139E /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96FF7A2275A1FE2000E139E /* Dictionary.swift */; };
 		A970742E2759E3D800302141 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A970742D2759E3D800302141 /* AppDelegate.swift */; };
-		A97074322759E3D800302141 /* SLLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97074312759E3D800302141 /* SLLoginViewController.swift */; };
+		A97074322759E3D800302141 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97074312759E3D800302141 /* LoginViewController.swift */; };
 		A97074352759E3D800302141 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A97074332759E3D800302141 /* Main.storyboard */; };
 		A97074372759E3DC00302141 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A97074362759E3DC00302141 /* Assets.xcassets */; };
 		A970743A2759E3DC00302141 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A97074382759E3DC00302141 /* LaunchScreen.storyboard */; };
-		A98157A3275E30EF007383C1 /* SLLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98157A2275E30EF007383C1 /* SLLoginViewModel.swift */; };
+		A98157A3275E30EF007383C1 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98157A2275E30EF007383C1 /* LoginViewModel.swift */; };
+		A98157A5275E37A1007383C1 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A98157A4275E37A1007383C1 /* Login.storyboard */; };
+		A98157A8275E37F4007383C1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98157A7275E37F4007383C1 /* MainViewController.swift */; };
 		A9A15DD0275B134200F01F84 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A15DCF275B134200F01F84 /* JSON.swift */; };
 		A9A15DD2275B40A200F01F84 /* Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A15DD1275B40A200F01F84 /* Codable.swift */; };
 		A9A15DD4275B412D00F01F84 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A15DD3275B412D00F01F84 /* Data.swift */; };
@@ -34,24 +36,26 @@
 /* Begin PBXFileReference section */
 		2F6125B89A75A3F1C579CD7C /* Pods-ChatApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatApp.release.xcconfig"; path = "Target Support Files/Pods-ChatApp/Pods-ChatApp.release.xcconfig"; sourceTree = "<group>"; };
 		500D52534CCF8157113DF5A6 /* Pods_BaseApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BaseApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A92D56FA275DBC460032F1C1 /* SLConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLConstants.swift; sourceTree = "<group>"; };
-		A92D5700275DF6B00032F1C1 /* SLProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLProtocols.swift; sourceTree = "<group>"; };
+		A92D56FA275DBC460032F1C1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A92D5700275DF6B00032F1C1 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		A96FF7902759F811000E139E /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
-		A96FF7932759FEFB000E139E /* SLGlobalFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLGlobalFunctions.swift; sourceTree = "<group>"; };
+		A96FF7932759FEFB000E139E /* GlobalFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
 		A96FF7952759FFD3000E139E /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		A96FF797275A011B000E139E /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		A96FF799275A0535000E139E /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
-		A96FF79E275A13C7000E139E /* SLAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLAPIClient.swift; sourceTree = "<group>"; };
+		A96FF79E275A13C7000E139E /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		A96FF7A0275A16AB000E139E /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		A96FF7A2275A1FE2000E139E /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		A970742A2759E3D800302141 /* BaseApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A970742D2759E3D800302141 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A97074312759E3D800302141 /* SLLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLLoginViewController.swift; sourceTree = "<group>"; };
+		A97074312759E3D800302141 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A97074342759E3D800302141 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A97074362759E3DC00302141 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A97074392759E3DC00302141 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A970743B2759E3DC00302141 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A98157A2275E30EF007383C1 /* SLLoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SLLoginViewModel.swift; sourceTree = "<group>"; };
+		A98157A2275E30EF007383C1 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		A98157A4275E37A1007383C1 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		A98157A7275E37F4007383C1 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		A9A15DCF275B134200F01F84 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		A9A15DD1275B40A200F01F84 /* Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Codable.swift; sourceTree = "<group>"; };
 		A9A15DD3275B412D00F01F84 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
@@ -79,8 +83,9 @@
 		A92D56FC275DF5A10032F1C1 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				A97074312759E3D800302141 /* SLLoginViewController.swift */,
-				A98157A2275E30EF007383C1 /* SLLoginViewModel.swift */,
+				A98157A4275E37A1007383C1 /* Login.storyboard */,
+				A97074312759E3D800302141 /* LoginViewController.swift */,
+				A98157A2275E30EF007383C1 /* LoginViewModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -89,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				A92D56FC275DF5A10032F1C1 /* Login */,
+				A98157A6275E37C3007383C1 /* Main */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -127,9 +133,9 @@
 		A96FF7922759FEE0000E139E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				A92D56FA275DBC460032F1C1 /* SLConstants.swift */,
-				A96FF7932759FEFB000E139E /* SLGlobalFunctions.swift */,
-				A92D5700275DF6B00032F1C1 /* SLProtocols.swift */,
+				A92D56FA275DBC460032F1C1 /* Constants.swift */,
+				A96FF7932759FEFB000E139E /* GlobalFunctions.swift */,
+				A92D5700275DF6B00032F1C1 /* Protocols.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -137,8 +143,8 @@
 		A96FF79D275A13B1000E139E /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				A96FF79E275A13C7000E139E /* APIClient.swift */,
 				A96FF7A0275A16AB000E139E /* Endpoint.swift */,
-				A96FF79E275A13C7000E139E /* SLAPIClient.swift */,
 				A92D5702275E1B8D0032F1C1 /* Codables */,
 			);
 			path = Networking;
@@ -169,7 +175,6 @@
 				A970742D2759E3D800302141 /* AppDelegate.swift */,
 				A97074362759E3DC00302141 /* Assets.xcassets */,
 				A97074382759E3DC00302141 /* LaunchScreen.storyboard */,
-				A97074332759E3D800302141 /* Main.storyboard */,
 				A96FF79D275A13B1000E139E /* Networking */,
 				A96FF78F2759F7F1000E139E /* Extensions */,
 				A96FF78C2759EA73000E139E /* Resources */,
@@ -177,6 +182,15 @@
 				A96FF7922759FEE0000E139E /* Utils */,
 			);
 			path = BaseApp;
+			sourceTree = "<group>";
+		};
+		A98157A6275E37C3007383C1 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				A97074332759E3D800302141 /* Main.storyboard */,
+				A98157A7275E37F4007383C1 /* MainViewController.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		BBD45848CAE969D02E6F31BC /* Frameworks */ = {
@@ -228,10 +242,10 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				CLASSPREFIX = SL;
+				CLASSPREFIX = "";
 				LastSwiftUpdateCheck = 1300;
 				LastUpgradeCheck = 1300;
-				ORGANIZATIONNAME = Slomins;
+				ORGANIZATIONNAME = BTCalls;
 				TargetAttributes = {
 					A97074292759E3D800302141 = {
 						CreatedOnToolsVersion = 13.0;
@@ -261,6 +275,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A98157A5275E37A1007383C1 /* Login.storyboard in Resources */,
 				A970743A2759E3DC00302141 /* LaunchScreen.storyboard in Resources */,
 				A97074372759E3DC00302141 /* Assets.xcassets in Resources */,
 				A97074352759E3D800302141 /* Main.storyboard in Resources */,
@@ -301,21 +316,22 @@
 			files = (
 				A9A15DD8275B4AD100F01F84 /* AuthCodable.swift in Sources */,
 				A96FF798275A011B000E139E /* UIApplication.swift in Sources */,
+				A98157A8275E37F4007383C1 /* MainViewController.swift in Sources */,
 				A9A15DD0275B134200F01F84 /* JSON.swift in Sources */,
 				A9A15DD2275B40A200F01F84 /* Codable.swift in Sources */,
 				A96FF7A1275A16AB000E139E /* Endpoint.swift in Sources */,
-				A98157A3275E30EF007383C1 /* SLLoginViewModel.swift in Sources */,
+				A98157A3275E30EF007383C1 /* LoginViewModel.swift in Sources */,
 				A96FF7A3275A1FE3000E139E /* Dictionary.swift in Sources */,
 				A96FF79A275A0535000E139E /* Bundle.swift in Sources */,
-				A92D56FB275DBC460032F1C1 /* SLConstants.swift in Sources */,
+				A92D56FB275DBC460032F1C1 /* Constants.swift in Sources */,
 				A96FF7962759FFD3000E139E /* UIDevice.swift in Sources */,
 				A9A15DDA275B4C0100F01F84 /* BaseCodable.swift in Sources */,
-				A97074322759E3D800302141 /* SLLoginViewController.swift in Sources */,
+				A97074322759E3D800302141 /* LoginViewController.swift in Sources */,
 				A9A15DD4275B412D00F01F84 /* Data.swift in Sources */,
-				A96FF79F275A13C7000E139E /* SLAPIClient.swift in Sources */,
+				A96FF79F275A13C7000E139E /* APIClient.swift in Sources */,
 				A970742E2759E3D800302141 /* AppDelegate.swift in Sources */,
-				A96FF7942759FEFB000E139E /* SLGlobalFunctions.swift in Sources */,
-				A92D5701275DF6B00032F1C1 /* SLProtocols.swift in Sources */,
+				A96FF7942759FEFB000E139E /* GlobalFunctions.swift in Sources */,
+				A92D5701275DF6B00032F1C1 /* Protocols.swift in Sources */,
 				A96FF7912759F811000E139E /* UserDefaults.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -413,7 +429,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BaseApp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "$(SL_APP_NAME)";
+				INFOPLIST_KEY_CFBundleDisplayName = "$(UD_APP_NAME)";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -426,20 +442,20 @@
 				MARKETING_VERSION = 5.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.btcalls.baseapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SL_APP_CODE = "$(SL_BASE_APP_CODE)_qa";
-				SL_APP_NAME = "$(SL_BASE_APP_NAME)$(SL_APP_SUFFIX)";
-				SL_APP_SUFFIX = QA;
-				SL_APP_UPDATE_URL = "itms-services://?action=download-manifest&url=https://s3.amazonaws.com/sloapps/$(SL_APP_NAME).plist";
-				SL_BASE_APP_CODE = chat;
-				SL_BASE_APP_NAME = Chat;
-				SL_BASE_URL = "https://qa2.slomins.com";
-				SL_DEVICE_TOKEN = TEST1;
-				SL_DISPLAY_APP_VERSION = "v$(MARKETING_VERSION)q";
-				SL_SHARED_URL = "/QA/Chat/1.2/\n";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = QA;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				UD_APP_CODE = "$(UD_BASE_APP_CODE)_qa";
+				UD_APP_NAME = "$(UD_BASE_APP_NAME)$(UD_APP_SUFFIX)";
+				UD_APP_SUFFIX = QA;
+				UD_APP_UPDATE_URL = "itms-services://?action=download-manifest&url=https://s3.amazonaws.com/sloapps/$(UD_APP_NAME).plist";
+				UD_BASE_APP_CODE = chat;
+				UD_BASE_APP_NAME = Chat;
+				UD_BASE_URL = "https://qa2.slomins.com";
+				UD_DEVICE_TOKEN = TEST1;
+				UD_DISPLAY_APP_VERSION = "v$(MARKETING_VERSION)q";
+				UD_SHARED_URL = "/QA/$(UD_BASE_APP_NAME)/1.2/";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = QA;
@@ -570,7 +586,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BaseApp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "$(SL_APP_NAME)";
+				INFOPLIST_KEY_CFBundleDisplayName = "$(UD_APP_NAME)";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -583,19 +599,19 @@
 				MARKETING_VERSION = 5.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.btcalls.baseapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SL_APP_CODE = "$(SL_BASE_APP_CODE)_dev";
-				SL_APP_NAME = "$(SL_BASE_APP_NAME)$(SL_APP_SUFFIX)";
-				SL_APP_SUFFIX = Dev;
-				SL_APP_UPDATE_URL = "itms-services://?action=download-manifest&url=https://s3.amazonaws.com/sloapps/$(SL_APP_NAME).plist";
-				SL_BASE_APP_CODE = chat;
-				SL_BASE_APP_NAME = Chat;
-				SL_BASE_URL = "https://dev1.slomins.com";
-				SL_DEVICE_TOKEN = TEST1;
-				SL_DISPLAY_APP_VERSION = "v$(MARKETING_VERSION)d";
-				SL_SHARED_URL = /Dev/Chat/1.2/;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				UD_APP_CODE = "$(UD_BASE_APP_CODE)_dev";
+				UD_APP_NAME = "$(UD_BASE_APP_NAME)$(UD_APP_SUFFIX)";
+				UD_APP_SUFFIX = Dev;
+				UD_APP_UPDATE_URL = "itms-services://?action=download-manifest&url=https://s3.amazonaws.com/sloapps/$(UD_APP_NAME).plist";
+				UD_BASE_APP_CODE = chat;
+				UD_BASE_APP_NAME = Chat;
+				UD_BASE_URL = "https://dev1.slomins.com";
+				UD_DEVICE_TOKEN = TEST1;
+				UD_DISPLAY_APP_VERSION = "v$(MARKETING_VERSION)d";
+				UD_SHARED_URL = "/Dev/$(UD_BASE_APP_NAME)/1.2/";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -610,7 +626,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BaseApp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "$(SL_APP_NAME)";
+				INFOPLIST_KEY_CFBundleDisplayName = "$(UD_APP_NAME)";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -623,19 +639,19 @@
 				MARKETING_VERSION = 5.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.btcalls.baseapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SL_APP_CODE = "$(SL_BASE_APP_CODE)_prod";
-				SL_APP_NAME = "$(SL_BASE_APP_NAME)$(SL_APP_SUFFIX)";
-				SL_APP_SUFFIX = "";
-				SL_APP_UPDATE_URL = "itms-services://?action=download-manifest&url=https://s3.amazonaws.com/sloapps/$(SL_APP_NAME).plist";
-				SL_BASE_APP_CODE = chat;
-				SL_BASE_APP_NAME = Chat;
-				SL_BASE_URL = "https://svcs.slomins.com";
-				SL_DEVICE_TOKEN = "";
-				SL_DISPLAY_APP_VERSION = "v$(MARKETING_VERSION)";
-				SL_SHARED_URL = /Prod/Chat/1.2/;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				UD_APP_CODE = "$(UD_BASE_APP_CODE)_prod";
+				UD_APP_NAME = "$(UD_BASE_APP_NAME)$(UD_APP_SUFFIX)";
+				UD_APP_SUFFIX = "";
+				UD_APP_UPDATE_URL = "itms-services://?action=download-manifest&url=https://s3.amazonaws.com/sloapps/$(UD_APP_NAME).plist";
+				UD_BASE_APP_CODE = chat;
+				UD_BASE_APP_NAME = Chat;
+				UD_BASE_URL = "https://svcs.slomins.com";
+				UD_DEVICE_TOKEN = "";
+				UD_DISPLAY_APP_VERSION = "v$(MARKETING_VERSION)";
+				UD_SHARED_URL = "/Prod/$(UD_BASE_APP_NAME)/1.2/";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
