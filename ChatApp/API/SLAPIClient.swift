@@ -23,6 +23,7 @@ enum APIError: LocalizedError {
     case network
     case noData
     case request(Error)
+    case response(String)
 
 }
 
@@ -35,13 +36,18 @@ extension APIError {
                                      comment: "Decode Failure")
 
         case .network:
-            return NSLocalizedString("Network is currently offline.", comment: "Offline Network")
+            return NSLocalizedString("Network is currently offline.",
+                                     comment: "Offline Network")
 
         case .noData:
-            return NSLocalizedString("No data available.", comment: "No Data")
+            return NSLocalizedString("No data available.",
+                                     comment: "No Data")
 
         case .request(let error):
             return error.localizedDescription
+
+        case .response(let message):
+            return NSLocalizedString(message, comment: "Response Error")
         }
     }
 
@@ -132,6 +138,11 @@ extension SLAPIClient {
                 return
             }
 
+            // Debug response
+            if let json = try? data.toJSON() {
+                printDebug("Response: \(json)")
+            }
+
             // Decode response
             guard let object = try! CodableTransform.toCodable(T.self, data: data) else {
                 completion(.failure(.decodable))
@@ -139,9 +150,28 @@ extension SLAPIClient {
                 return
             }
 
-            printDebug("Ack: \(object.acknowledge == .failure)")
+            DispatchQueue.main.async {
+                // Handle acknowledge
+                switch object.acknowledge {
+                case .success:
+                    completion(.success(object))
 
-            completion(.success(object))
+                case .failure:
+                    completion(.failure(.response(object.responseMessage)))
+
+                case .logout:
+                    AppDelegate.shared.logout()
+                    completion(.failure(.response(object.responseMessage)))
+
+                case .update:
+                    AppDelegate.shared.updateApp()
+                    completion(.failure(.response(object.responseMessage)))
+
+                case .logoutAndUpdate:
+                    AppDelegate.shared.logout(toUpdate: true)
+                    completion(.failure(.response(object.responseMessage)))
+                }
+            }
         }
 
         dataTask.resume()

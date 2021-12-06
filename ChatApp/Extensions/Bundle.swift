@@ -18,6 +18,11 @@ extension Bundle {
 
         return value.trimmingCharacters(in: .whitespacesAndNewlines)
     }
+    var appName: String {
+        let value = object(forInfoDictionaryKey: "CFBundleDisplayName") as! String
+
+        return value.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
     var appVersion: String {
         let value = object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
 

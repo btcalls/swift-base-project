@@ -34,7 +34,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
-// MARK: Global Functions
+// MARK: Auth Functions
+
+extension AppDelegate {
+
+    func logout(toUpdate: Bool = false) {
+        // TODO: Logout
+        printDebug("Logout")
+    }
+
+    func updateApp() {
+        let title = "Update App"
+        let message = """
+        \(Bundle.main.displayAppVersion)
+
+        A newer version of \(Bundle.main.appName) is now available.
+
+        \(Bundle.main.appName) will be updated automatically.
+        """
+
+        presentDialog(type: .custom(title: title, message: message), buttonTitle: "Update")
+    }
+
+}
+
+// MARK: Presenter Functions
 
 extension AppDelegate {
 
@@ -44,10 +68,12 @@ extension AppDelegate {
         // TODO: Toast
     }
 
-    /// Presents an alert dialog at the topmost controller.
+    /// Presents a basic alert with a single action at the topmost controller.
     /// - Parameters:
     ///   - type: Type of dialog to display.
-    func presentDialog(type: DialogType) {
+    ///   - buttonTitle: Title to display on the action.
+    ///   - cancelTitle: Title to display on the cancel action.
+    func presentDialog(type: DialogType, buttonTitle: String = "OK") {
         var title = ""
         var message = ""
 
@@ -65,7 +91,7 @@ extension AppDelegate {
                                       message: message,
                                       preferredStyle: .alert)
 
-        alert.addAction(.init(title: "OK", style: .cancel))
+        alert.addAction(.init(title: buttonTitle, style: .cancel))
         topMostController?.present(alert, animated: true, completion: nil)
     }
 

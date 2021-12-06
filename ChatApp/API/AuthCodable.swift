@@ -10,8 +10,8 @@ import Foundation
 
 enum Acknowledge: Int, Codable {
 
-    case failure = 0
     case success = 1
+    case failure = 0
     case logout = 3
     case update = 5
     case logoutAndUpdate = 6
@@ -31,7 +31,7 @@ struct LoginRequest: FormEncodable {
 
     // TODO: Enter test creds here
     static var testParams: Self {
-        return .init(password: "shamelesszzz", userName: "KYHECzzz")
+        return .init(password: "shameless", userName: "KYHEC")
     }
 
 }

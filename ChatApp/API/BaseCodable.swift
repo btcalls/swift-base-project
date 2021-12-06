@@ -18,6 +18,14 @@ protocol SLAPIResponse {
 
 }
 
+extension SLAPIResponse {
+
+    var responseMessage: String {
+        return fullMessage.isEmpty ? message : fullMessage
+    }
+
+}
+
 struct AppSidRequest: FormEncodable {
 
     var appSid: String
