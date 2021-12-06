@@ -46,17 +46,13 @@ extension Endpoint {
 
 // MARK: Constants
 
-// TODO: Declare endpoints here
 extension Endpoint {
-
+    // TODO: Declare endpoints here
     static var login: Self {
         return Endpoint(path: "/Login")
     }
     static var logout: Self {
         return Endpoint(path: "/Logout")
-    }
-    static var threads: Self {
-        return Endpoint(path: "/GetAllThread")
     }
 
 }

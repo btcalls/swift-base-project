@@ -24,7 +24,7 @@ enum SLNetworkResponse: String {
     case failed = "Network request failed."
     case offline = "Network is offline."
     case noData = "Response returned with no data to decode."
-    case decodeError = "We could not decode the response."
+    case decodeError = "Could not decode response."
 }
 
 extension SLError {
@@ -32,8 +32,7 @@ extension SLError {
     var errorDescription: String? {
         switch self {
         case .network(let message):
-            return NSLocalizedString(message.rawValue,
-                                     comment: "Network Error")
+            return NSLocalizedString(message.rawValue, comment: "Network Error")
 
 
         case .custom(let message):

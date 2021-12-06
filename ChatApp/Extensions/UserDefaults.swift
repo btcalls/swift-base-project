@@ -10,8 +10,8 @@ import Foundation
 
 extension UserDefaults {
 
-    // TODO: Define keys here
     enum Keys: String {
+        // TODO: Define keys here
         case appSid = "appSid"
     }
 

@@ -9,16 +9,12 @@
 import Foundation
 
 enum Acknowledge: Int, Codable {
-
     case success = 1
     case failure = 0
     case logout = 3
     case update = 5
     case logoutAndUpdate = 6
-
 }
-
-protocol FormEncodable: Encodable {}
 
 protocol APIResponseDecodable: Decodable {
 
@@ -43,6 +39,8 @@ struct BaseAPIResponse: APIResponseDecodable {
     var message: String
 
 }
+
+protocol FormEncodable: Encodable {}
 
 struct AppSidRequest: FormEncodable {
 

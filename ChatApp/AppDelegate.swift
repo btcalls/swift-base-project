@@ -87,7 +87,6 @@ extension AppDelegate {
     /// - Parameters:
     ///   - type: Type of dialog to display.
     ///   - buttonTitle: Title to display on the action.
-    ///   - cancelTitle: Title to display on the cancel action.
     func presentDialog(type: SLDialogType, buttonTitle: String = "OK") {
         var title = ""
         var message = ""
@@ -108,6 +107,11 @@ extension AppDelegate {
 
         alert.addAction(.init(title: buttonTitle, style: .cancel))
         topMostController?.present(alert, animated: true, completion: nil)
+    }
+
+    /// Toggles loader display to signify ongoing process.
+    func toggleLoader() {
+        // TODO: Loader
     }
 
 }

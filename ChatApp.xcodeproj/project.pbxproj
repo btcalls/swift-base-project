@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A92D56FB275DBC460032F1C1 /* SLConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92D56FA275DBC460032F1C1 /* SLConstants.swift */; };
+		A92D56FF275DF6130032F1C1 /* SLLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92D56FE275DF6130032F1C1 /* SLLoginViewModel.swift */; };
+		A92D5701275DF6B00032F1C1 /* SLProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92D5700275DF6B00032F1C1 /* SLProtocols.swift */; };
 		A96FF7912759F811000E139E /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96FF7902759F811000E139E /* UserDefaults.swift */; };
 		A96FF7942759FEFB000E139E /* SLGlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96FF7932759FEFB000E139E /* SLGlobalFunctions.swift */; };
 		A96FF7962759FFD3000E139E /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96FF7952759FFD3000E139E /* UIDevice.swift */; };
@@ -17,7 +19,7 @@
 		A96FF7A1275A16AB000E139E /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96FF7A0275A16AB000E139E /* Endpoint.swift */; };
 		A96FF7A3275A1FE3000E139E /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96FF7A2275A1FE2000E139E /* Dictionary.swift */; };
 		A970742E2759E3D800302141 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A970742D2759E3D800302141 /* AppDelegate.swift */; };
-		A97074322759E3D800302141 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97074312759E3D800302141 /* ViewController.swift */; };
+		A97074322759E3D800302141 /* SLLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97074312759E3D800302141 /* SLLoginViewController.swift */; };
 		A97074352759E3D800302141 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A97074332759E3D800302141 /* Main.storyboard */; };
 		A97074372759E3DC00302141 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A97074362759E3DC00302141 /* Assets.xcassets */; };
 		A970743A2759E3DC00302141 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A97074382759E3DC00302141 /* LaunchScreen.storyboard */; };
@@ -32,6 +34,8 @@
 /* Begin PBXFileReference section */
 		2F6125B89A75A3F1C579CD7C /* Pods-ChatApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatApp.release.xcconfig"; path = "Target Support Files/Pods-ChatApp/Pods-ChatApp.release.xcconfig"; sourceTree = "<group>"; };
 		A92D56FA275DBC460032F1C1 /* SLConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLConstants.swift; sourceTree = "<group>"; };
+		A92D56FE275DF6130032F1C1 /* SLLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SLLoginViewModel.swift; path = ChatApp/Scenes/Login/SLLoginViewModel.swift; sourceTree = SOURCE_ROOT; };
+		A92D5700275DF6B00032F1C1 /* SLProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLProtocols.swift; sourceTree = "<group>"; };
 		A96FF7902759F811000E139E /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		A96FF7932759FEFB000E139E /* SLGlobalFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLGlobalFunctions.swift; sourceTree = "<group>"; };
 		A96FF7952759FFD3000E139E /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
@@ -42,7 +46,7 @@
 		A96FF7A2275A1FE2000E139E /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		A970742A2759E3D800302141 /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A970742D2759E3D800302141 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A97074312759E3D800302141 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A97074312759E3D800302141 /* SLLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLLoginViewController.swift; sourceTree = "<group>"; };
 		A97074342759E3D800302141 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A97074362759E3DC00302141 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A97074392759E3DC00302141 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -69,6 +73,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A92D56FC275DF5A10032F1C1 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				A97074312759E3D800302141 /* SLLoginViewController.swift */,
+				A92D56FE275DF6130032F1C1 /* SLLoginViewModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		A92D56FD275DF5AA0032F1C1 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				A92D56FC275DF5A10032F1C1 /* Login */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		A92D5702275E1B8D0032F1C1 /* Codables */ = {
+			isa = PBXGroup;
+			children = (
+				A9A15DD7275B4AD100F01F84 /* AuthCodable.swift */,
+				A9A15DD9275B4C0100F01F84 /* BaseCodable.swift */,
+			);
+			path = Codables;
+			sourceTree = "<group>";
+		};
 		A96FF78C2759EA73000E139E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -96,19 +126,19 @@
 			children = (
 				A92D56FA275DBC460032F1C1 /* SLConstants.swift */,
 				A96FF7932759FEFB000E139E /* SLGlobalFunctions.swift */,
+				A92D5700275DF6B00032F1C1 /* SLProtocols.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		A96FF79D275A13B1000E139E /* API */ = {
+		A96FF79D275A13B1000E139E /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				A9A15DD7275B4AD100F01F84 /* AuthCodable.swift */,
-				A9A15DD9275B4C0100F01F84 /* BaseCodable.swift */,
 				A96FF7A0275A16AB000E139E /* Endpoint.swift */,
 				A96FF79E275A13C7000E139E /* SLAPIClient.swift */,
+				A92D5702275E1B8D0032F1C1 /* Codables */,
 			);
-			path = API;
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		A97074212759E3D800302141 = {
@@ -134,13 +164,13 @@
 			children = (
 				A970743B2759E3DC00302141 /* Info.plist */,
 				A970742D2759E3D800302141 /* AppDelegate.swift */,
-				A97074312759E3D800302141 /* ViewController.swift */,
 				A97074362759E3DC00302141 /* Assets.xcassets */,
 				A97074382759E3DC00302141 /* LaunchScreen.storyboard */,
 				A97074332759E3D800302141 /* Main.storyboard */,
-				A96FF79D275A13B1000E139E /* API */,
+				A96FF79D275A13B1000E139E /* Networking */,
 				A96FF78F2759F7F1000E139E /* Extensions */,
 				A96FF78C2759EA73000E139E /* Resources */,
+				A92D56FD275DF5AA0032F1C1 /* Scenes */,
 				A96FF7922759FEE0000E139E /* Utils */,
 			);
 			path = ChatApp;
@@ -263,6 +293,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A92D56FF275DF6130032F1C1 /* SLLoginViewModel.swift in Sources */,
 				A9A15DD8275B4AD100F01F84 /* AuthCodable.swift in Sources */,
 				A96FF798275A011B000E139E /* UIApplication.swift in Sources */,
 				A9A15DD0275B134200F01F84 /* JSON.swift in Sources */,
@@ -273,11 +304,12 @@
 				A92D56FB275DBC460032F1C1 /* SLConstants.swift in Sources */,
 				A96FF7962759FFD3000E139E /* UIDevice.swift in Sources */,
 				A9A15DDA275B4C0100F01F84 /* BaseCodable.swift in Sources */,
-				A97074322759E3D800302141 /* ViewController.swift in Sources */,
+				A97074322759E3D800302141 /* SLLoginViewController.swift in Sources */,
 				A9A15DD4275B412D00F01F84 /* Data.swift in Sources */,
 				A96FF79F275A13C7000E139E /* SLAPIClient.swift in Sources */,
 				A970742E2759E3D800302141 /* AppDelegate.swift in Sources */,
 				A96FF7942759FEFB000E139E /* SLGlobalFunctions.swift in Sources */,
+				A92D5701275DF6B00032F1C1 /* SLProtocols.swift in Sources */,
 				A96FF7912759F811000E139E /* UserDefaults.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

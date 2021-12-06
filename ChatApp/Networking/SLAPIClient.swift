@@ -27,10 +27,6 @@ class SLAPIClient: NSObject {
         return !appSid.isEmpty
     }
 
-}
-
-extension SLAPIClient {
-
     func get<R: APIResponseDecodable>(
         type: R.Type,
         endpoint: Endpoint,
@@ -84,6 +80,7 @@ extension SLAPIClient {
             }
         }
 
+        // Headers
         endpoint.headers.forEach { (key, value) in
             if let value = value as? String {
                 request.setValue(value, forHTTPHeaderField: key)
@@ -117,7 +114,7 @@ extension SLAPIClient {
 
             switch httpResponse.statusCode {
             case 200...299:
-                fallthrough
+                httpError = nil
 
             case 401...500:
                 httpError = .network(.authError)
@@ -130,7 +127,7 @@ extension SLAPIClient {
             }
 
             if let httpError = httpError {
-                printDebug("Error: \(httpError.localizedDescription)")
+                printDebug("HTTP Error: \(httpError.localizedDescription)")
                 completion(.failure(httpError))
 
                 return
@@ -145,7 +142,7 @@ extension SLAPIClient {
             guard let object = try! CodableTransform.toCodable(T.self, data: data) else {
                 let networkError: SLError = .network(.decodeError)
 
-                printDebug("Error: \(networkError.localizedDescription)")
+                printDebug("Network Error: \(networkError.localizedDescription)")
                 completion(.failure(networkError))
 
                 return
@@ -178,7 +175,7 @@ extension SLAPIClient {
                     break
                 }
 
-                printDebug("Error: \(responseError)")
+                printDebug("Response Error: \(responseError)")
                 completion(.failure(responseError))
             }
         }
