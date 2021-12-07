@@ -11,6 +11,7 @@
 		A92D56FB275DBC460032F1C1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92D56FA275DBC460032F1C1 /* Constants.swift */; };
 		A92D5701275DF6B00032F1C1 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92D5700275DF6B00032F1C1 /* Protocols.swift */; };
 		A94AA80D275EF6BB0024C01F /* UIWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94AA80C275EF6BB0024C01F /* UIWindow.swift */; };
+		A94AA810275F0A410024C01F /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94AA80F275F0A410024C01F /* R.generated.swift */; };
 		A96FF7912759F811000E139E /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96FF7902759F811000E139E /* UserDefaults.swift */; };
 		A96FF7942759FEFB000E139E /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96FF7932759FEFB000E139E /* GlobalFunctions.swift */; };
 		A96FF7962759FFD3000E139E /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96FF7952759FFD3000E139E /* UIDevice.swift */; };
@@ -40,6 +41,7 @@
 		A92D56FA275DBC460032F1C1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A92D5700275DF6B00032F1C1 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		A94AA80C275EF6BB0024C01F /* UIWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWindow.swift; sourceTree = "<group>"; };
+		A94AA80F275F0A410024C01F /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		A96FF7902759F811000E139E /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		A96FF7932759FEFB000E139E /* GlobalFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
 		A96FF7952759FFD3000E139E /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 		A96FF78C2759EA73000E139E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A94AA80F275F0A410024C01F /* R.generated.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -233,9 +236,11 @@
 			buildConfigurationList = A970743E2759E3DC00302141 /* Build configuration list for PBXNativeTarget "BaseApp" */;
 			buildPhases = (
 				FE2DAD138B5D9BD80F3DEC5A /* [CP] Check Pods Manifest.lock */,
+				A94AA80E275F091C0024C01F /* R.swift */,
 				A97074262759E3D800302141 /* Sources */,
 				A97074272759E3D800302141 /* Frameworks */,
 				A97074282759E3D800302141 /* Resources */,
+				7CE0F4C1946DAE41CE943973 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -296,6 +301,43 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		7CE0F4C1946DAE41CE943973 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BaseApp/Pods-BaseApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BaseApp/Pods-BaseApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BaseApp/Pods-BaseApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A94AA80E275F091C0024C01F /* R.swift */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = R.swift;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/$PRODUCT_NAME/Resources/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/$PRODUCT_NAME/Resources/R.generated.swift\"\n";
+		};
 		FE2DAD138B5D9BD80F3DEC5A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -333,6 +375,7 @@
 				A96FF7A1275A16AB000E139E /* Endpoint.swift in Sources */,
 				A98157A3275E30EF007383C1 /* LoginViewModel.swift in Sources */,
 				A94AA80D275EF6BB0024C01F /* UIWindow.swift in Sources */,
+				A94AA810275F0A410024C01F /* R.generated.swift in Sources */,
 				A96FF7A3275A1FE3000E139E /* Dictionary.swift in Sources */,
 				A96FF79A275A0535000E139E /* Bundle.swift in Sources */,
 				A92D56FB275DBC460032F1C1 /* Constants.swift in Sources */,

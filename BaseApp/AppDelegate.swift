@@ -31,10 +31,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
-        var vc: UIViewController = UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController()!
+        var vc: UIViewController = R.storyboard.login.instantiateInitialViewController()!
 
         if APIClient.shared.isAuthenticated {
-            vc = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()!
+            vc = R.storyboard.main.instantiateInitialViewController()!
         }
 
         window?.rootViewController = vc

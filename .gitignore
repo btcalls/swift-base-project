@@ -3,6 +3,7 @@ Pods
 *.xcodeproj/project.xcworkspace
 *.xcodeproj/xcuserdata
 *.xcworkspace
+*.generated.swift
 
 Debug.plist
 QA.plist

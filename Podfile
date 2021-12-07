@@ -6,5 +6,6 @@ target 'BaseApp' do
   use_frameworks!
 
   # Pods for BaseApp
+  pod 'R.swift'
 
 end
