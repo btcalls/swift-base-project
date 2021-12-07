@@ -18,10 +18,6 @@ class LoginViewController: UIViewController, ViewController {
         // Do any additional setup after loading the view.
 
         self.viewModel.delegate = self
-
-        if APIClient.shared.isAuthenticated {
-            // TODO: Redirect to Home
-        }
     }
     
 }

@@ -14,8 +14,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    private var loader: UIAlertController {
+        let alert = UIAlertController(title: nil,
+                                      message: "Please wait...",
+                                      preferredStyle: .alert)
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = .gray
+
+        loadingIndicator.startAnimating()
+        alert.view.addSubview(loadingIndicator)
+
+        return alert
+    }
     private var topMostController: UIViewController? {
-        if var controller = UIApplication.shared.keyWindow?.rootViewController {
+        if let window = UIWindow.key, var controller = window.rootViewController {
             while let presentedViewController = controller.presentedViewController {
                 controller = presentedViewController
             }
@@ -29,6 +42,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+
+        var vc: UIViewController = UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController()!
+
+        if APIClient.shared.isAuthenticated {
+            vc = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()!
+        }
+
+        window?.rootViewController = vc
+
+        window?.makeKeyAndVisible()
+
         return true
     }
 
@@ -88,6 +112,10 @@ extension AppDelegate {
     ///   - type: Type of dialog to display.
     ///   - buttonTitle: Title to display on the action.
     func presentDialog(type: DialogType, buttonTitle: String = "OK") {
+        guard let topMostController = topMostController else {
+            preconditionFailure("No controller available to present loader.")
+        }
+
         var title = ""
         var message = ""
 
@@ -106,12 +134,21 @@ extension AppDelegate {
                                       preferredStyle: .alert)
 
         alert.addAction(.init(title: buttonTitle, style: .cancel))
-        topMostController?.present(alert, animated: true, completion: nil)
+        topMostController.present(alert, animated: true, completion: nil)
     }
 
     /// Toggles loader display to signify ongoing process.
     func toggleLoader() {
-        // TODO: Loader
+        guard let topMostController = topMostController else {
+            preconditionFailure("No controller available to present loader.")
+        }
+
+        // Dismiss loader
+        if topMostController.presentedViewController == loader {
+            loader.dismiss(animated: true, completion: nil)
+        } else {
+            topMostController.present(loader, animated: true, completion: nil)
+        }
     }
 
 }

@@ -10,6 +10,7 @@
 		2912E8D1379864B0E4B0F08D /* Pods_BaseApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 500D52534CCF8157113DF5A6 /* Pods_BaseApp.framework */; };
 		A92D56FB275DBC460032F1C1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92D56FA275DBC460032F1C1 /* Constants.swift */; };
 		A92D5701275DF6B00032F1C1 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92D5700275DF6B00032F1C1 /* Protocols.swift */; };
+		A94AA80D275EF6BB0024C01F /* UIWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94AA80C275EF6BB0024C01F /* UIWindow.swift */; };
 		A96FF7912759F811000E139E /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96FF7902759F811000E139E /* UserDefaults.swift */; };
 		A96FF7942759FEFB000E139E /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96FF7932759FEFB000E139E /* GlobalFunctions.swift */; };
 		A96FF7962759FFD3000E139E /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96FF7952759FFD3000E139E /* UIDevice.swift */; };
@@ -38,6 +39,7 @@
 		500D52534CCF8157113DF5A6 /* Pods_BaseApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BaseApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A92D56FA275DBC460032F1C1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A92D5700275DF6B00032F1C1 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		A94AA80C275EF6BB0024C01F /* UIWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWindow.swift; sourceTree = "<group>"; };
 		A96FF7902759F811000E139E /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		A96FF7932759FEFB000E139E /* GlobalFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
 		A96FF7952759FFD3000E139E /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
@@ -108,6 +110,13 @@
 			path = Codables;
 			sourceTree = "<group>";
 		};
+		A94AA809275EF08B0024C01F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		A96FF78C2759EA73000E139E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +135,7 @@
 				A96FF797275A011B000E139E /* UIApplication.swift */,
 				A96FF7952759FFD3000E139E /* UIDevice.swift */,
 				A96FF7902759F811000E139E /* UserDefaults.swift */,
+				A94AA80C275EF6BB0024C01F /* UIWindow.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -180,6 +190,7 @@
 				A96FF78C2759EA73000E139E /* Resources */,
 				A92D56FD275DF5AA0032F1C1 /* Scenes */,
 				A96FF7922759FEE0000E139E /* Utils */,
+				A94AA809275EF08B0024C01F /* Views */,
 			);
 			path = BaseApp;
 			sourceTree = "<group>";
@@ -321,6 +332,7 @@
 				A9A15DD2275B40A200F01F84 /* Codable.swift in Sources */,
 				A96FF7A1275A16AB000E139E /* Endpoint.swift in Sources */,
 				A98157A3275E30EF007383C1 /* LoginViewModel.swift in Sources */,
+				A94AA80D275EF6BB0024C01F /* UIWindow.swift in Sources */,
 				A96FF7A3275A1FE3000E139E /* Dictionary.swift in Sources */,
 				A96FF79A275A0535000E139E /* Bundle.swift in Sources */,
 				A92D56FB275DBC460032F1C1 /* Constants.swift in Sources */,
