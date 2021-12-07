@@ -69,7 +69,7 @@ class APIClient: NSObject {
     }
 
     private func getRequest(for endpoint: Endpoint, method: HTTPMethod) -> URLRequest {
-        printDebug("Request to \(endpoint.url.absoluteString)")
+        Debugger.print("Request to \(endpoint.url.absoluteString)")
 
         var request = URLRequest(url: endpoint.url)
 
@@ -82,7 +82,7 @@ class APIClient: NSObject {
 
             if let httpBody = try? encodable?.toJSONData() {
                 if let json = try? httpBody.toJSON() {
-                    printDebug("Params: \(json)")
+                    Debugger.print("Params: \(json)")
                 }
 
                 request.httpBody = httpBody
@@ -110,7 +110,7 @@ class APIClient: NSObject {
             if let error = error {
                 let customError: CustomError = .custom(error.localizedDescription)
 
-                printDebug("Error: \(customError.localizedDescription)")
+                Debugger.print("Error: \(customError.localizedDescription)")
                 completion(.failure(customError))
 
                 return
@@ -124,7 +124,7 @@ class APIClient: NSObject {
 
             // Check HTTP response
             if let httpError = self.getHttpError(response) {
-                printDebug("HTTP Error: \(httpError.localizedDescription)")
+                Debugger.print("HTTP Error: \(httpError.localizedDescription)")
                 completion(.failure(httpError))
 
                 return
@@ -132,14 +132,14 @@ class APIClient: NSObject {
 
             // Debug response
             if let json = try? data.toJSON() {
-                printDebug("JSON Response: \(json)")
+                Debugger.print("JSON Response: \(json)")
             }
 
             // Decode response
             guard let object = try? CodableTransform.toCodable(T.self, data: data) else {
                 let networkError: CustomError = .network(.decodeError)
 
-                printDebug("Network Error: \(networkError.localizedDescription)")
+                Debugger.print("Network Error: \(networkError.localizedDescription)")
                 completion(.failure(networkError))
 
                 return
@@ -168,7 +168,7 @@ class APIClient: NSObject {
                 break
             }
 
-            printDebug("Response Error: \(responseError)")
+            Debugger.print("Response Error: \(responseError)")
             completion(.failure(responseError))
         }
 

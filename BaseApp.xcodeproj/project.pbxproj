@@ -118,13 +118,6 @@
 			path = Codables;
 			sourceTree = "<group>";
 		};
-		A94AA809275EF08B0024C01F /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		A94AA813275F267D0024C01F /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +125,13 @@
 				A94AA814275F26AD0024C01F /* PushNotificationsManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		A966676F275F4F0800B8B2B8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		A96FF78C2759EA73000E139E /* Resources */ = {
@@ -210,7 +210,7 @@
 				A96FF78C2759EA73000E139E /* Resources */,
 				A92D56FD275DF5AA0032F1C1 /* Scenes */,
 				A96FF7922759FEE0000E139E /* Utils */,
-				A94AA809275EF08B0024C01F /* Views */,
+				A966676F275F4F0800B8B2B8 /* Views */,
 			);
 			path = BaseApp;
 			sourceTree = "<group>";

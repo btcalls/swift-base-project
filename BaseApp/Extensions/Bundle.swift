@@ -61,7 +61,7 @@ extension Bundle {
 
     /// Prints to console the current app configuration.
     func printConfig() {
-        printDebug("""
+        Debugger.print("""
 
         App code: \(appCode)
         App version: \(appVersion)
