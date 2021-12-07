@@ -9,6 +9,17 @@
 import Foundation
 import UIKit
 
+/// Protocol used for implementing a view controller with an associated view model.
+protocol ViewModelController {
+
+    associatedtype ViewModel
+
+    var viewModel: ViewModel { get set }
+
+}
+
+// MARK: View Model
+
 enum FormViewModelResponse {
     case success
     case error(message: String)
@@ -33,15 +44,6 @@ protocol ViewModel {
 
     func fetchData()
     func reloadData()
-
-}
-
-/// Protocol used for implementing a view controller with an associated view model.
-protocol ViewController {
-
-    associatedtype ViewModel
-
-    var viewModel: ViewModel { get set }
 
 }
 

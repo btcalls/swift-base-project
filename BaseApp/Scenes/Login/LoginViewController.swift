@@ -7,14 +7,13 @@
 
 import UIKit
 
-class LoginViewController: UIViewController, ViewController {
+class LoginViewController: UIViewController, ViewModelController {
 
     typealias ViewModel = LoginViewModel
 
     var viewModel: LoginViewModel = LoginViewModel()
 
     @IBAction private func onLoginClick(_ sender: Any) {
-        AppDelegate.shared.toggleLoader()
         viewModel.submitForm(.testParams)
     }
     
@@ -30,13 +29,11 @@ class LoginViewController: UIViewController, ViewController {
 extension LoginViewController: ViewModelDelegate {
 
     func onSuccess() {
-        // TODO: Disable loader; Redirect to Home
-        AppDelegate.shared.toggleLoader()
+        // TODO: Redirect to Home
     }
 
     func onError(_ error: CustomError) {
-        // TODO: Disable loader; Re-enable form
-        AppDelegate.shared.toggleLoader()
+        // TODO: Re-enable form
     }
 
 }

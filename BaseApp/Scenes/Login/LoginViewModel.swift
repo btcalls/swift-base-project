@@ -31,6 +31,7 @@ class LoginViewModel: FormViewModel {
 
         switch status {
         case .success:
+            AppDelegate.shared.toggleLoader()
             login()
 
         case .error(let message):
@@ -40,9 +41,13 @@ class LoginViewModel: FormViewModel {
     }
 
     private func login() {
-        APIClient.shared.request(to: .login,
-                                 method: .post(LoginRequest.testParams),
-                                 responseType: LoginResponse.self) { [weak self] result in
+        APIClient.shared.request(
+            to: .login,
+            method: .post(LoginRequest.testParams),
+            responseType: LoginResponse.self
+        ) { [weak self] result in
+            AppDelegate.shared.toggleLoader()
+
             switch result {
             case .success(let response):
                 UserDefaults.standard.set(response.appSid, forKey: .appSid)
