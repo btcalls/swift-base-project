@@ -29,7 +29,7 @@ class LoginViewController: UIViewController, ViewModelController {
 extension LoginViewController: ViewModelDelegate {
 
     func onSuccess() {
-        // TODO: Redirect to Home
+        performSegue(withIdentifier: R.segue.loginViewController.main, sender: nil)
     }
 
     func onError(_ error: CustomError) {

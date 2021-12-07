@@ -13,8 +13,10 @@
 		A94AA80D275EF6BB0024C01F /* UIWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94AA80C275EF6BB0024C01F /* UIWindow.swift */; };
 		A94AA810275F0A410024C01F /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94AA80F275F0A410024C01F /* R.generated.swift */; };
 		A94AA812275F250A0024C01F /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94AA811275F250A0024C01F /* UIViewController.swift */; };
+		A94AA815275F26AD0024C01F /* PushNotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94AA814275F26AD0024C01F /* PushNotificationsManager.swift */; };
+		A94AA817275F2B140024C01F /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94AA816275F2B140024C01F /* LocationManager.swift */; };
 		A96FF7912759F811000E139E /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96FF7902759F811000E139E /* UserDefaults.swift */; };
-		A96FF7942759FEFB000E139E /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96FF7932759FEFB000E139E /* GlobalFunctions.swift */; };
+		A96FF7942759FEFB000E139E /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96FF7932759FEFB000E139E /* Utils.swift */; };
 		A96FF7962759FFD3000E139E /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96FF7952759FFD3000E139E /* UIDevice.swift */; };
 		A96FF798275A011B000E139E /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96FF797275A011B000E139E /* UIApplication.swift */; };
 		A96FF79A275A0535000E139E /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96FF799275A0535000E139E /* Bundle.swift */; };
@@ -44,8 +46,10 @@
 		A94AA80C275EF6BB0024C01F /* UIWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWindow.swift; sourceTree = "<group>"; };
 		A94AA80F275F0A410024C01F /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		A94AA811275F250A0024C01F /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		A94AA814275F26AD0024C01F /* PushNotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationsManager.swift; sourceTree = "<group>"; };
+		A94AA816275F2B140024C01F /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		A96FF7902759F811000E139E /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
-		A96FF7932759FEFB000E139E /* GlobalFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
+		A96FF7932759FEFB000E139E /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		A96FF7952759FFD3000E139E /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		A96FF797275A011B000E139E /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		A96FF799275A0535000E139E /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
@@ -121,6 +125,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		A94AA813275F267D0024C01F /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				A94AA816275F2B140024C01F /* LocationManager.swift */,
+				A94AA814275F26AD0024C01F /* PushNotificationsManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		A96FF78C2759EA73000E139E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -150,7 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				A92D56FA275DBC460032F1C1 /* Constants.swift */,
-				A96FF7932759FEFB000E139E /* GlobalFunctions.swift */,
+				A96FF7932759FEFB000E139E /* Utils.swift */,
 				A92D5700275DF6B00032F1C1 /* Protocols.swift */,
 			);
 			path = Utils;
@@ -191,8 +204,9 @@
 				A970742D2759E3D800302141 /* AppDelegate.swift */,
 				A97074362759E3DC00302141 /* Assets.xcassets */,
 				A97074382759E3DC00302141 /* LaunchScreen.storyboard */,
-				A96FF79D275A13B1000E139E /* Networking */,
 				A96FF78F2759F7F1000E139E /* Extensions */,
+				A94AA813275F267D0024C01F /* Managers */,
+				A96FF79D275A13B1000E139E /* Networking */,
 				A96FF78C2759EA73000E139E /* Resources */,
 				A92D56FD275DF5AA0032F1C1 /* Scenes */,
 				A96FF7922759FEE0000E139E /* Utils */,
@@ -382,6 +396,7 @@
 				A96FF7A3275A1FE3000E139E /* Dictionary.swift in Sources */,
 				A96FF79A275A0535000E139E /* Bundle.swift in Sources */,
 				A92D56FB275DBC460032F1C1 /* Constants.swift in Sources */,
+				A94AA815275F26AD0024C01F /* PushNotificationsManager.swift in Sources */,
 				A96FF7962759FFD3000E139E /* UIDevice.swift in Sources */,
 				A9A15DDA275B4C0100F01F84 /* BaseCodable.swift in Sources */,
 				A94AA812275F250A0024C01F /* UIViewController.swift in Sources */,
@@ -389,7 +404,8 @@
 				A9A15DD4275B412D00F01F84 /* Data.swift in Sources */,
 				A96FF79F275A13C7000E139E /* APIClient.swift in Sources */,
 				A970742E2759E3D800302141 /* AppDelegate.swift in Sources */,
-				A96FF7942759FEFB000E139E /* GlobalFunctions.swift in Sources */,
+				A94AA817275F2B140024C01F /* LocationManager.swift in Sources */,
+				A96FF7942759FEFB000E139E /* Utils.swift in Sources */,
 				A92D5701275DF6B00032F1C1 /* Protocols.swift in Sources */,
 				A96FF7912759F811000E139E /* UserDefaults.swift in Sources */,
 			);
@@ -488,7 +504,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BaseApp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "$(UD_APP_NAME)";
+				INFOPLIST_KEY_CFBundleDisplayName = ChatQA;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -645,7 +661,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BaseApp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "$(UD_APP_NAME)";
+				INFOPLIST_KEY_CFBundleDisplayName = ChatQA;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -685,7 +701,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BaseApp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "$(UD_APP_NAME)";
+				INFOPLIST_KEY_CFBundleDisplayName = ChatQA;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

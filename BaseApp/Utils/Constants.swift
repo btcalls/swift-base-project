@@ -8,14 +8,14 @@
 
 import Foundation
 
-enum DialogType {
-    case custom(title: String, message: String)
-    case error(CustomError)
-}
-
 enum CustomError: LocalizedError {
     case network(NetworkResponse)
     case custom(String)
+}
+
+enum DialogType {
+    case custom(title: String, message: String)
+    case error(CustomError)
 }
 
 enum NetworkResponse: String {
@@ -25,6 +25,11 @@ enum NetworkResponse: String {
     case offline = "Network is offline."
     case noData = "Response returned with no data to decode."
     case decodeError = "Could not decode response."
+}
+
+enum PermissionType: String {
+    case notifications = "Notifications capability is required to receive latest updates."
+    case location = "Locations capability is required to keep track of current location."
 }
 
 extension CustomError {

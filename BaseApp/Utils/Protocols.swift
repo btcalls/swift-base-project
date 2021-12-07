@@ -9,6 +9,39 @@
 import Foundation
 import UIKit
 
+// MARK: Managers
+
+protocol CapabilityManager {
+
+    /// Flag whether corresponding capability has been authorized for usage.
+    var isAuthorized: Bool { get set }
+
+    /// Applies configuration to correponding capability's manager to prepare for authorization request.
+    func configure()
+    /// Calls the correponding capability's manager's authorization request.
+    func requestAuthorization()
+
+}
+
+extension CapabilityManager {
+
+    func presentRequireDialog(_ message: PermissionType) {
+        let alert = UIAlertController(title: "Enable Settings",
+                                      message: message.rawValue,
+                                      preferredStyle: .alert)
+
+        alert.addAction(.init(title: "Close", style: .cancel))
+        alert.addAction(.init(title: "Open Settings", style: .default, handler: { _ in
+            UIApplication.shared.open(UIApplication.openSettingsURLString)
+        }))
+
+        ViewPresenter.present(alert: alert)
+    }
+
+}
+
+// MARK: View Controllers
+
 /// Protocol used for implementing a view controller with an associated view model.
 protocol ViewModelController {
 
@@ -18,7 +51,7 @@ protocol ViewModelController {
 
 }
 
-// MARK: View Model
+// MARK: View Models
 
 enum FormViewModelResponse {
     case success

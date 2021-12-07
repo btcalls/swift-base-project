@@ -31,16 +31,15 @@ class LoginViewModel: FormViewModel {
 
         switch status {
         case .success:
-            AppDelegate.shared.toggleLoader()
             login()
 
         case .error(let message):
-            AppDelegate.shared.presentDialog(type: .custom(title: "Validation",
-                                                           message: message))
+            ViewPresenter.presentAlert(.custom(title: "Validation", message: message))
         }
     }
 
     private func login() {
+        AppDelegate.shared.toggleLoader()
         APIClient.shared.request(
             to: .login,
             method: .post(LoginRequest.testParams),

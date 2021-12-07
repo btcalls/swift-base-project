@@ -37,7 +37,7 @@ class APIClient: NSObject {
             DispatchQueue.main.async {
                 switch result {
                 case .failure(let error):
-                    AppDelegate.shared.presentDialog(type: .error(error))
+                    ViewPresenter.presentAlert(.error(error))
 
                 default:
                     break
