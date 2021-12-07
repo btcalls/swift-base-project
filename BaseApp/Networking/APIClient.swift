@@ -10,7 +10,7 @@ import UIKit
 
 enum HTTPMethod {
     case get
-    case post(Data?)
+    case post(FormEncodable?)
 }
 
 class APIClient: NSObject {
@@ -25,146 +25,30 @@ class APIClient: NSObject {
         return !appSid.isEmpty
     }
 
-    func get<R: APIResponseDecodable>(
-        type: R.Type,
-        endpoint: Endpoint,
-        completion: @escaping(Swift.Result<R, CustomError>) -> Void
-    ) {
-        request(type: type,
-                endpoint: endpoint,
-                method: .get,
-                completion: completion)
-    }
-
-    func post<R: APIResponseDecodable, F: FormEncodable>(
-        type: R.Type,
-        endpoint: Endpoint,
-        body: F?,
-        completion: @escaping(Swift.Result<R, CustomError>) -> Void
-    ) {
-        var data: Data?
-
-        if let body = body {
-            data = try? CodableTransform.toJSONData(encodable: body)
-        }
-
-        request(type: type,
-                endpoint: endpoint,
-                method: .post(data),
-                completion: completion)
-    }
-
-    private func request<T: APIResponseDecodable>(
-        type: T.Type,
-        endpoint: Endpoint,
+    func request<R: APIResponseDecodable>(
+        to endpoint: Endpoint,
         method: HTTPMethod,
-        completion: @escaping(Swift.Result<T, CustomError>) -> Void
+        responseType type: R.Type,
+        completion: @escaping(Swift.Result<R, CustomError>) -> Void
     ) {
-        var request = URLRequest(url: endpoint.url)
+        let request = getRequest(for: endpoint, method: method)
 
-        switch method {
-        case .get:
-            request.httpMethod = "GET"
-
-        case .post(let httpBody):
-            request.httpMethod = "POST"
-
-            if let httpBody = httpBody {
-                if let json = try? httpBody.toJSON() {
-                    printDebug("Params: \(json)")
-                }
-
-                request.httpBody = httpBody
-            }
-        }
-
-        // Headers
-        endpoint.headers.forEach { (key, value) in
-            if let value = value as? String {
-                request.setValue(value, forHTTPHeaderField: key)
-            }
-        }
-
-        printDebug("Sending request to \(endpoint.url.absoluteString)")
-
-        let session = URLSession(configuration: .default)
-        let dataTask = session.dataTask(with: request) { data, response, error in
-            // Handle error
-            if let error = error {
-                let customError: CustomError = .custom(error.localizedDescription)
-
-                printDebug("Error: \(customError.localizedDescription)")
-                completion(.failure(customError))
-                AppDelegate.shared.presentDialog(type: .error(customError))
-
-                return
-            }
-
-            guard let data = data, response != nil else {
-                completion(.failure(.network(.noData)))
-
-                return
-            }
-
-            // Check HTTP response
-            if let httpError = self.httpError(response) {
-                printDebug("HTTP Error: \(httpError.localizedDescription)")
-                completion(.failure(httpError))
-
-                return
-            }
-
-            // Debug response
-            if let json = try? data.toJSON() {
-                printDebug("JSON Response: \(json)")
-            }
-
-            // Decode response
-            guard let object = try! CodableTransform.toCodable(T.self, data: data) else {
-                let networkError: CustomError = .network(.decodeError)
-
-                printDebug("Network Error: \(networkError.localizedDescription)")
-                completion(.failure(networkError))
-
-                return
-            }
-
+        executeRequest(type: type, request: request) { result in
             DispatchQueue.main.async {
-                // Handle acknowledge
-                if object.acknowledge == .success {
-                    completion(.success(object))
-
-                    return
-                }
-
-                let responseError: CustomError = .custom(object.responseMessage)
-
-                switch object.acknowledge {
-                case .failure:
-                    AppDelegate.shared.presentDialog(type: .error(responseError))
-
-                case .logout:
-                    AppDelegate.shared.logout()
-
-                case .update:
-                    AppDelegate.shared.updateApp()
-
-                case .logoutAndUpdate:
-                    AppDelegate.shared.logout(toUpdate: true)
+                switch result {
+                case .failure(let error):
+                    AppDelegate.shared.presentDialog(type: .error(error))
 
                 default:
                     break
                 }
 
-                printDebug("Response Error: \(responseError)")
-                completion(.failure(responseError))
+                completion(result)
             }
         }
-
-        dataTask.resume()
     }
-
-    private func httpError(_ response: URLResponse?) -> CustomError? {
+    
+    private func getHttpError(_ response: URLResponse?) -> CustomError? {
         guard let response = response as? HTTPURLResponse else {
             return .network(.failed)
         }
@@ -182,6 +66,113 @@ class APIClient: NSObject {
         default:
             return .network(.failed)
         }
+    }
+
+    private func getRequest(for endpoint: Endpoint, method: HTTPMethod) -> URLRequest {
+        printDebug("Request to \(endpoint.url.absoluteString)")
+
+        var request = URLRequest(url: endpoint.url)
+
+        switch method {
+        case .get:
+            request.httpMethod = "GET"
+
+        case .post(let encodable):
+            request.httpMethod = "POST"
+
+            if let httpBody = try? encodable?.toJSONData() {
+                if let json = try? httpBody.toJSON() {
+                    printDebug("Params: \(json)")
+                }
+
+                request.httpBody = httpBody
+            }
+        }
+
+        // Headers
+        endpoint.headers.forEach { (key, value) in
+            if let value = value as? String {
+                request.setValue(value, forHTTPHeaderField: key)
+            }
+        }
+
+        return request
+    }
+
+    private func executeRequest<T: APIResponseDecodable>(
+        type: T.Type,
+        request: URLRequest,
+        completion: @escaping(Swift.Result<T, CustomError>) -> Void
+    ) {
+        let session = URLSession(configuration: .default)
+        let dataTask = session.dataTask(with: request) { data, response, error in
+            // Handle error
+            if let error = error {
+                let customError: CustomError = .custom(error.localizedDescription)
+
+                printDebug("Error: \(customError.localizedDescription)")
+                completion(.failure(customError))
+
+                return
+            }
+
+            guard let data = data, response != nil else {
+                completion(.failure(.network(.noData)))
+
+                return
+            }
+
+            // Check HTTP response
+            if let httpError = self.getHttpError(response) {
+                printDebug("HTTP Error: \(httpError.localizedDescription)")
+                completion(.failure(httpError))
+
+                return
+            }
+
+            // Debug response
+            if let json = try? data.toJSON() {
+                printDebug("JSON Response: \(json)")
+            }
+
+            // Decode response
+            guard let object = try? CodableTransform.toCodable(T.self, data: data) else {
+                let networkError: CustomError = .network(.decodeError)
+
+                printDebug("Network Error: \(networkError.localizedDescription)")
+                completion(.failure(networkError))
+
+                return
+            }
+
+            // Handle acknowledge
+            if object.acknowledge == .success {
+                completion(.success(object))
+
+                return
+            }
+
+            let responseError: CustomError = .custom(object.responseMessage)
+
+            switch object.acknowledge {
+            case .logout:
+                AppDelegate.shared.logout()
+
+            case .update:
+                AppDelegate.shared.updateApp()
+
+            case .logoutAndUpdate:
+                AppDelegate.shared.logout(toUpdate: true)
+
+            default:
+                break
+            }
+
+            printDebug("Response Error: \(responseError)")
+            completion(.failure(responseError))
+        }
+
+        dataTask.resume()
     }
 
 }

@@ -40,9 +40,9 @@ class LoginViewModel: FormViewModel {
     }
 
     private func login() {
-        APIClient.shared.post(type: LoginResponse.self,
-                                endpoint: .login,
-                                body: LoginRequest.testParams) { [weak self] result in
+        APIClient.shared.request(to: .login,
+                                 method: .post(LoginRequest.testParams),
+                                 responseType: LoginResponse.self) { [weak self] result in
             switch result {
             case .success(let response):
                 UserDefaults.standard.set(response.appSid, forKey: .appSid)

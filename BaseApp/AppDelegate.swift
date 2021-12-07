@@ -14,19 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    private var loader: UIAlertController {
-        let alert = UIAlertController(title: nil,
-                                      message: "Please wait...",
-                                      preferredStyle: .alert)
-        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
-        loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.style = .gray
-
-        loadingIndicator.startAnimating()
-        alert.view.addSubview(loadingIndicator)
-
-        return alert
-    }
+    private var loader: UIAlertController?
     private var topMostController: UIViewController? {
         if let window = UIWindow.key, var controller = window.rootViewController {
             while let presentedViewController = controller.presentedViewController {
@@ -67,18 +55,18 @@ extension AppDelegate {
         // TODO: Handle logout; Redirect to Login
 
         // TODO: If logout endpoint is available
-        APIClient.shared.post(type: BaseAPIResponse.self,
-                              endpoint: .logout,
-                              body: AppSidRequest.init()) { result in
-            switch result {
-            case .success(_):
-                // TODO: Handle logout; Redirect to Login
-                break
-
-            case .failure(_):
-                break
-            }
-        }
+//        APIClient.shared.request(to: .login,
+//                                 method: .post(AppSidRequest.init()),
+//                                 responseType: BaseAPIResponse.self) { result in
+//            switch result {
+//            case .success(_):
+//                // TODO: Handle logout; Redirect to Login
+//                break
+//
+//            case .failure(_):
+//                break
+//            }
+//        }
     }
 
     func updateApp() {
@@ -144,11 +132,27 @@ extension AppDelegate {
         }
 
         // Dismiss loader
-        if topMostController.presentedViewController == loader {
-            loader.dismiss(animated: true, completion: nil)
-        } else {
-            topMostController.present(loader, animated: true, completion: nil)
+        if let loader = loader {
+            loader.dismiss(animated: true) { [weak self] in
+                self?.loader = nil
+            }
+
+            return
         }
+
+        // Present loader
+        let alert = UIAlertController(title: nil,
+                                      message: "Please wait...",
+                                      preferredStyle: .alert)
+        let indicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        indicator.hidesWhenStopped = true
+        indicator.style = .gray
+
+        loader = alert
+        
+        indicator.startAnimating()
+        alert.view.addSubview(indicator)
+        topMostController.present(alert, animated: true, completion: nil)
     }
 
 }

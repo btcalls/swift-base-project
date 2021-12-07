@@ -45,6 +45,17 @@ struct BaseAPIResponse: APIResponseDecodable {
 /// Protocol for API or form encodables to be used as parameters or HTTP body data.
 protocol FormEncodable: Encodable {}
 
+extension FormEncodable {
+
+    func toJSONData() throws -> Data? {
+        let encoder = JSONEncoder()
+        encoder.keyEncodingStrategy = .toUpperCamelCase
+
+        return try encoder.encode(self)
+    }
+
+}
+
 struct AppSidRequest: FormEncodable {
 
     var appSid: String
