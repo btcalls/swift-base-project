@@ -10,7 +10,7 @@ import Foundation
 
 extension Dictionary {
 
-    func jsonString() -> String? {
+    func toJSONString() -> String? {
         if let data = self.toData(),
            let string = String(data: data, encoding: .utf8) {
             return string

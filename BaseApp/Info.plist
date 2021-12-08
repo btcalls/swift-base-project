@@ -2,20 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>$(PRODUCT_NAME) requires Locations to be enabled for tracking current location.</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>$(PRODUCT_NAME) requires Locations to be enabled for tracking current location.</string>
-	<key>UD_APP_CODE</key>
-	<string>$(UD_APP_CODE)</string>
 	<key>UD_BASE_URL</key>
 	<string>$(UD_BASE_URL)</string>
-	<key>UD_DEVICE_TOKEN</key>
-	<string>$(UD_DEVICE_TOKEN)</string>
 	<key>UD_DISPLAY_APP_VERSION</key>
 	<string>$(UD_DISPLAY_APP_VERSION)</string>
-	<key>UD_SHARED_URL</key>
-	<string>$(UD_SHARED_URL)</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>

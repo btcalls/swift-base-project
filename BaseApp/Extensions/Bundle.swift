@@ -13,11 +13,6 @@ extension Bundle {
 
     // MARK: User-Defined Build Settings
 
-    var appCode: String {
-        let value = object(forInfoDictionaryKey: "UD_APP_CODE") as! String
-
-        return value.trimmingCharacters(in: .whitespacesAndNewlines)
-    }
     var appName: String {
         let value = object(forInfoDictionaryKey: "CFBundleDisplayName") as! String
 
@@ -33,12 +28,6 @@ extension Bundle {
 
         return value.trimmingCharacters(in: .whitespacesAndNewlines)
     }
-    var deviceToken: String {
-        var token = object(forInfoDictionaryKey: "UD_DEVICE_TOKEN") as! String
-        token = token.trimmingCharacters(in: .whitespacesAndNewlines)
-
-        return token.isEmpty ? UIDevice.current.name : token
-    }
     var displayAppVersion: String {
         let value = object(forInfoDictionaryKey: "UD_DISPLAY_APP_VERSION") as! String
 
@@ -53,21 +42,13 @@ extension Bundle {
         return true
         #endif
     }
-    var sharedURL: String {
-        let value = object(forInfoDictionaryKey: "UD_SHARED_URL") as! String
-
-        return value.trimmingCharacters(in: .whitespacesAndNewlines)
-    }
 
     /// Prints to console the current app configuration.
     func printConfig() {
         Debugger.print("""
 
-        App code: \(appCode)
         App version: \(appVersion)
-        Device token: \(deviceToken)
         Base URL: \(baseURL)
-        Shared URL: \(sharedURL)
         """)
     }
 

@@ -8,37 +8,17 @@
 
 import Foundation
 
-enum Acknowledge: Int, Codable {
-    case success = 1
-    case failure = 0
-    case logout = 3
-    case update = 5
-    case logoutAndUpdate = 6
-}
-
 /// Protocol for decodable instances used to encapsulate an API response.
 protocol APIResponseDecodable: Decodable {
 
-    var acknowledge: Acknowledge { get set }
-    var fullMessage: String { get set }
-    var message: String { get set }
-
-}
-
-extension APIResponseDecodable {
-
-    var responseMessage: String {
-        return fullMessage.isEmpty ? message : fullMessage
-    }
+    // TODO: Add common response data properties
 
 }
 
 /// Struct for common API response data.
 struct BaseAPIResponse: APIResponseDecodable {
 
-    var acknowledge: Acknowledge
-    var fullMessage: String
-    var message: String
+    // TODO: Conform to protocol
 
 }
 
@@ -52,20 +32,6 @@ extension FormEncodable {
         encoder.keyEncodingStrategy = .toUpperCamelCase
 
         return try encoder.encode(self)
-    }
-
-}
-
-struct AppSidRequest: FormEncodable {
-
-    var appSid: String
-
-    init() {
-        guard let appSid: String = UserDefaults.standard.get(.appSid) else {
-            preconditionFailure("No valid appSid found.")
-        }
-
-        self.appSid = appSid
     }
 
 }

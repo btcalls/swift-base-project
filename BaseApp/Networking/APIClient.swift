@@ -18,11 +18,9 @@ class APIClient: NSObject {
     static let shared: APIClient = APIClient()
 
     var isAuthenticated: Bool {
-        guard let appSid: String = UserDefaults.standard.get(.appSid) else {
-            return false
-        }
+        // TODO: Implement checking
 
-        return !appSid.isEmpty
+        return false
     }
 
     func request<R: APIResponseDecodable>(
@@ -119,7 +117,10 @@ class APIClient: NSObject {
             }
 
             guard let data = data, response != nil else {
-                completion(.failure(.network(.noData)))
+                let networkError: CustomError = .network(.noData)
+
+                Debugger.print("Network Error: \(networkError.localizedDescription)")
+                completion(.failure(networkError))
 
                 return
             }
@@ -147,31 +148,7 @@ class APIClient: NSObject {
                 return
             }
 
-            // Handle acknowledge
-            if object.acknowledge == .success {
-                completion(.success(object))
-
-                return
-            }
-
-            let responseError: CustomError = .custom(object.responseMessage)
-
-            switch object.acknowledge {
-            case .logout:
-                AppDelegate.shared.logout()
-
-            case .update:
-                AppDelegate.shared.updateApp()
-
-            case .logoutAndUpdate:
-                AppDelegate.shared.logout(toUpdate: true)
-
-            default:
-                break
-            }
-
-            Debugger.print("Response Error: \(responseError)")
-            completion(.failure(responseError))
+            completion(.success(object))
         }
 
         dataTask.resume()

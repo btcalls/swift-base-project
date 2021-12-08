@@ -14,6 +14,7 @@ struct Endpoint {
 
     var path: String
     var queryItems: [URLQueryItem] = []
+    var isAuthenticated: Bool = true
 
 }
 
@@ -21,10 +22,10 @@ extension Endpoint {
 
     var url: URL {
         // TODO: Update `basePath`
-        let basePath = "ChatService.svc"
+        let basePath = ""
 
         var components = URLComponents(string: Bundle.main.baseURL)!
-        components.path = "\(Bundle.main.sharedURL)\(basePath)\(path)"
+        components.path = "\(basePath)\(path)"
 
         if !queryItems.isEmpty {
             components.queryItems = queryItems
@@ -37,22 +38,26 @@ extension Endpoint {
         return url
     }
     var headers: [String: Any] {
-        return [
+        var values: [String: String] = [
             "Content-Type": "application/json; charset=utf-8;"
         ]
+
+        if isAuthenticated, let token: String = UserDefaults.standard.get(.accessToken) {
+            values["Authorization"] = "Bearer \(token)"
+        }
+
+        return values
     }
 
 }
 
 // MARK: Constants
 
+// TODO: Declare endpoints here
 extension Endpoint {
-    // TODO: Declare endpoints here
+    
     static var login: Self {
-        return Endpoint(path: "/Login")
-    }
-    static var logout: Self {
-        return Endpoint(path: "/Logout")
+        return Endpoint(path: "/login")
     }
 
 }

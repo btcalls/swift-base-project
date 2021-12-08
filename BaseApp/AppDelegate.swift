@@ -55,38 +55,12 @@ extension AppDelegate {
     func logout(toUpdate: Bool = false) {
         let vc: UIViewController = R.storyboard.login.instantiateInitialViewController()!
 
-        UserDefaults.standard.remove(.appSid)
+        UserDefaults.standard.remove(.accessToken)
         window?.rootViewController = vc
 
         window?.makeKeyAndVisible()
 
-        // TODO: If logout endpoint is available
-//        APIClient.shared.request(to: .logout,
-//                                 method: .post(AppSidRequest.init()),
-//                                 responseType: BaseAPIResponse.self) { result in
-//            switch result {
-//            case .success(_):
-//                // TODO: Handle logout; Redirect to Login
-//                break
-//
-//            case .failure(_):
-//                break
-//            }
-//        }
-    }
-
-    func updateApp() {
-        let title = "Update App"
-        let message = """
-        \(Bundle.main.displayAppVersion)
-
-        A newer version of \(Bundle.main.appName) is now available.
-
-        \(Bundle.main.appName) will be updated automatically.
-        """
-
-        ViewPresenter.presentAlert(.custom(title: title, message: message),
-                                   buttonTitle: "Update")
+        // TODO: API call if logout endpoint is available
     }
 
 }

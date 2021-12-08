@@ -12,7 +12,7 @@ extension UserDefaults {
 
     enum Keys: String {
         // TODO: Define keys here
-        case appSid = "appSid"
+        case accessToken = "accessToken"
     }
 
     func get<T>(_ key: Keys) -> T? {

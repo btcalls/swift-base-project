@@ -504,7 +504,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BaseApp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = ChatQA;
+				INFOPLIST_KEY_CFBundleDisplayName = "$(UD_APP_NAME)";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "$(PRODUCT_NAME) requires Locations to be enabled for tracking current location.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "$(PRODUCT_NAME) requires Locations to be enabled for tracking current location.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -514,23 +516,17 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 5.0.5;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.btcalls.baseapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = QA;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				UD_APP_CODE = "$(UD_BASE_APP_CODE)_qa";
 				UD_APP_NAME = "$(UD_BASE_APP_NAME)$(UD_APP_SUFFIX)";
 				UD_APP_SUFFIX = QA;
-				UD_APP_UPDATE_URL = "itms-services://?action=download-manifest&url=https://s3.amazonaws.com/sloapps/$(UD_APP_NAME).plist";
-				UD_BASE_APP_CODE = chat;
-				UD_BASE_APP_NAME = Chat;
-				UD_BASE_URL = "https://qa2.slomins.com";
-				UD_DEVICE_TOKEN = TEST1;
-				UD_DISPLAY_APP_VERSION = "v$(MARKETING_VERSION)q";
-				UD_SHARED_URL = "/QA/$(UD_BASE_APP_NAME)/1.2/";
+				UD_BASE_APP_NAME = BaseApp;
+				UD_DISPLAY_APP_VERSION = "v$(MARKETING_VERSION)-QA";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = QA;
@@ -661,7 +657,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BaseApp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = ChatQA;
+				INFOPLIST_KEY_CFBundleDisplayName = "$(UD_APP_NAME)";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "$(PRODUCT_NAME) requires Locations to be enabled for tracking current location.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "$(PRODUCT_NAME) requires Locations to be enabled for tracking current location.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -671,22 +669,16 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 5.0.5;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.btcalls.baseapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				UD_APP_CODE = "$(UD_BASE_APP_CODE)_dev";
 				UD_APP_NAME = "$(UD_BASE_APP_NAME)$(UD_APP_SUFFIX)";
 				UD_APP_SUFFIX = Dev;
-				UD_APP_UPDATE_URL = "itms-services://?action=download-manifest&url=https://s3.amazonaws.com/sloapps/$(UD_APP_NAME).plist";
-				UD_BASE_APP_CODE = chat;
-				UD_BASE_APP_NAME = Chat;
-				UD_BASE_URL = "https://dev1.slomins.com";
-				UD_DEVICE_TOKEN = TEST1;
-				UD_DISPLAY_APP_VERSION = "v$(MARKETING_VERSION)d";
-				UD_SHARED_URL = "/Dev/$(UD_BASE_APP_NAME)/1.2/";
+				UD_BASE_APP_NAME = BaseApp;
+				UD_DISPLAY_APP_VERSION = "v$(MARKETING_VERSION)-dev";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -701,7 +693,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BaseApp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = ChatQA;
+				INFOPLIST_KEY_CFBundleDisplayName = "$(UD_APP_NAME)";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "$(PRODUCT_NAME) requires Locations to be enabled for tracking current location.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "$(PRODUCT_NAME) requires Locations to be enabled for tracking current location.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -711,22 +705,16 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 5.0.5;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.btcalls.baseapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				UD_APP_CODE = "$(UD_BASE_APP_CODE)_prod";
 				UD_APP_NAME = "$(UD_BASE_APP_NAME)$(UD_APP_SUFFIX)";
 				UD_APP_SUFFIX = "";
-				UD_APP_UPDATE_URL = "itms-services://?action=download-manifest&url=https://s3.amazonaws.com/sloapps/$(UD_APP_NAME).plist";
-				UD_BASE_APP_CODE = chat;
-				UD_BASE_APP_NAME = Chat;
-				UD_BASE_URL = "https://svcs.slomins.com";
-				UD_DEVICE_TOKEN = "";
+				UD_BASE_APP_NAME = BaseApp;
 				UD_DISPLAY_APP_VERSION = "v$(MARKETING_VERSION)";
-				UD_SHARED_URL = "/Prod/$(UD_BASE_APP_NAME)/1.2/";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

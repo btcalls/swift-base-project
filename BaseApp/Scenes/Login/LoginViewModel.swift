@@ -46,8 +46,8 @@ class LoginViewModel: FormViewModel {
             responseType: LoginResponse.self
         ) { [weak self] result in
             switch result {
-            case .success(let response):
-                UserDefaults.standard.set(response.appSid, forKey: .appSid)
+            case .success(_):
+                // TODO: Store tokens, etc.
                 self?.delegate?.onSuccess()
 
             case .failure(let error):

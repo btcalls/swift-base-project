@@ -10,28 +10,18 @@ import Foundation
 
 struct LoginRequest: FormEncodable {
 
-    var appCode: String = Bundle.main.appCode
-    var appVersion: String = Bundle.main.appVersion
-    var deviceToken: String = Bundle.main.deviceToken
-    var isKeepLogin = true
-    var latitude: Double = 0
-    var longitude: Double = 0
     var password: String
     var userName: String
 
     // TODO: Enter test creds here
     static var testParams: Self {
-        return .init(password: "shameless", userName: "KYHEC")
+        return .init(password: "xxx", userName: "xxx")
     }
 
 }
 
 struct LoginResponse: APIResponseDecodable {
 
-    var acknowledge: Acknowledge
-    var fullMessage: String
-    var message: String
-    var appSid: String
-    var securityLevel: Int = 1
+    // TODO: Update accordingly
 
 }
