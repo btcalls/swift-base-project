@@ -58,6 +58,10 @@ class LocationManager: NSObject, CapabilityManager {
     }
 
     func startMonitorLocation() {
+        if !isAuthorized {
+            return
+        }
+        
         if CLLocationManager.significantLocationChangeMonitoringAvailable() {
             locationManager.startMonitoringSignificantLocationChanges()
             locationManager.startUpdatingLocation()
