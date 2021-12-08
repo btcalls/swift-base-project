@@ -12,7 +12,7 @@
         <!--Login View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Y6W-OH-hqX" customClass="LoginViewController" customModule="BaseApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="Y6W-OH-hqX" customClass="LoginViewController" customModule="BaseApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -34,7 +34,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="kCC-On-PuF" kind="show" identifier="Main" id="Ahh-Qc-gIp"/>
+                        <segue destination="kCC-On-PuF" kind="showDetail" identifier="Main" id="Ahh-Qc-gIp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

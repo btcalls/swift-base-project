@@ -10,6 +10,10 @@ import UIKit
 
 class MainViewController: UIViewController {
 
+    @IBAction private func onLogoutClick(_ sender: Any) {
+        AppDelegate.shared.logout()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

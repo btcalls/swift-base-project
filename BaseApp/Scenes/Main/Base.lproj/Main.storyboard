@@ -5,30 +5,31 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="BaseApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="MainViewController" customModule="BaseApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Main" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HYI-ci-Y78">
-                                <rect key="frame" x="188.5" y="437.5" width="37" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TQe-Jp-fwU">
+                                <rect key="frame" x="172" y="432.5" width="70" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Logout"/>
+                                <connections>
+                                    <action selector="onLogoutClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jfo-hR-R0Y"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="HYI-ci-Y78" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="77j-MV-8sM"/>
-                            <constraint firstItem="HYI-ci-Y78" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="nVb-pR-Qce"/>
+                            <constraint firstItem="TQe-Jp-fwU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Tfk-gc-sUf"/>
+                            <constraint firstItem="TQe-Jp-fwU" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="tC8-8b-iAY"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -37,9 +38,4 @@
             <point key="canvasLocation" x="139" y="100"/>
         </scene>
     </scenes>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>

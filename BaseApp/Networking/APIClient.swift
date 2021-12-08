@@ -35,15 +35,17 @@ class APIClient: NSObject {
 
         executeRequest(type: type, request: request) { result in
             DispatchQueue.main.async {
-                switch result {
-                case .failure(let error):
-                    ViewPresenter.presentAlert(.error(error))
+                AppDelegate.shared.hideLoader {
+                    switch result {
+                    case .failure(let error):
+                        ViewPresenter.presentAlert(.error(error))
 
-                default:
-                    break
+                    default:
+                        break
+                    }
+
+                    completion(result)
                 }
-
-                completion(result)
             }
         }
     }

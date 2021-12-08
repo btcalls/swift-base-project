@@ -31,22 +31,20 @@ class LoginViewModel: FormViewModel {
 
         switch status {
         case .success:
-            login()
+            login(with: params)
 
         case .error(let message):
-            ViewPresenter.presentAlert(.custom(title: "Validation", message: message))
+            ViewPresenter.presentAlert(.custom(title: "", message: message))
         }
     }
 
-    private func login() {
-        AppDelegate.shared.toggleLoader()
+    private func login(with params: LoginRequest) {
+        AppDelegate.shared.showLoader()
         APIClient.shared.request(
             to: .login,
-            method: .post(LoginRequest.testParams),
+            method: .post(params),
             responseType: LoginResponse.self
         ) { [weak self] result in
-            AppDelegate.shared.toggleLoader()
-
             switch result {
             case .success(let response):
                 UserDefaults.standard.set(response.appSid, forKey: .appSid)
