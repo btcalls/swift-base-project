@@ -21,8 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
         // Permissions
-        PushNotificationsManager.shared.configure()
-        LocationManager.shared.configure()
+        // TODO: Enable if needed
+//        PushNotificationsManager.shared.configure()
+//        LocationManager.shared.configure()
 
         // Root view controller
         var vc: UIViewController = R.storyboard.login.instantiateInitialViewController()!
@@ -52,11 +53,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate {
 
     func logout(toUpdate: Bool = false) {
+        let vc: UIViewController = R.storyboard.login.instantiateInitialViewController()!
+
         UserDefaults.standard.remove(.appSid)
-        // TODO: Handle logout; Redirect to Login
+        window?.rootViewController = vc
+
+        window?.makeKeyAndVisible()
 
         // TODO: If logout endpoint is available
-//        APIClient.shared.request(to: .login,
+//        APIClient.shared.request(to: .logout,
 //                                 method: .post(AppSidRequest.init()),
 //                                 responseType: BaseAPIResponse.self) { result in
 //            switch result {
@@ -90,20 +95,13 @@ extension AppDelegate {
 
 extension AppDelegate {
 
-    /// Toggles loader display to signify ongoing process.
-    func toggleLoader() {
-        // Dismiss loader
-        if let loader = loader {
-            loader.dismiss(animated: true) { [weak self] in
-                self?.loader = nil
-            }
-
-            return
-        }
-
-        // Present loader
+    /// Show loader to signify ongoing process.
+    /// - Parameter message: The title to display.
+    /// - Parameter completion: Optional. Handler called when animation is completed.
+    func showLoader(message: String = "Please wait...",
+                    completion: (() -> Void)? = nil) {
         let alert = UIAlertController(title: nil,
-                                      message: "Please wait...",
+                                      message: message,
                                       preferredStyle: .alert)
         let indicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         indicator.hidesWhenStopped = true
@@ -114,6 +112,18 @@ extension AppDelegate {
         indicator.startAnimating()
         alert.view.addSubview(indicator)
         ViewPresenter.present(alert: alert)
+    }
+
+    /// Hide loader to stop process.
+    /// - Parameter completion: Optional. Handler called when animation is completed.
+    func hideLoader(_ completion: (() -> Void)? = nil) {
+        if let loader = loader {
+            loader.dismiss(animated: true) { [weak self] in
+                self?.loader = nil
+
+                completion?()
+            }
+        }
     }
 
 }
