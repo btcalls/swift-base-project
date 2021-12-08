@@ -9,6 +9,16 @@
 import Foundation
 import UIKit
 
+// MARK: Cells
+
+protocol ConfigurableCell {
+
+    associatedtype T
+
+    func configure(with value: T)
+
+}
+
 // MARK: Managers
 
 protocol CapabilityManager {
@@ -73,6 +83,9 @@ protocol FormViewModel {
 /// Protocol for implementing a view model with fetching/reloading data capabilities used for populating a screen.
 protocol ViewModel {
 
+    associatedtype Value
+
+    var data: Value { get set }
     var delegate: ViewModelDelegate? { get set }
 
     func fetchData()

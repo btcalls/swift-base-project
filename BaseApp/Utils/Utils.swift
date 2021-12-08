@@ -47,6 +47,35 @@ struct Debugger {
 
 }
 
+// MARK: Utils
+
+struct ValueBox<T> {
+
+    typealias Listener = (T?) -> Void
+
+    private var listener: Listener?
+    private var value: T? {
+        didSet {
+            listener?(value)
+        }
+    }
+
+    init(_ value: T? = nil) {
+        self.value = value
+    }
+
+    mutating func set(value: T?) {
+        self.value = value
+    }
+
+    mutating func bind(listener: Listener?) {
+        self.listener = listener
+
+        listener?(value)
+    }
+
+}
+
 struct ViewPresenter {
 
     private static var topMostController: UIViewController? {
