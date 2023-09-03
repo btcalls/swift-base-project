@@ -503,7 +503,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = BaseApp/Info.plist;
+				INFOPLIST_FILE = "$(UD_BASE_APP_NAME)/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "$(UD_APP_NAME)";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "$(PRODUCT_NAME) requires Locations to be enabled for tracking current location.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "$(PRODUCT_NAME) requires Locations to be enabled for tracking current location.";
@@ -656,7 +656,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = BaseApp/Info.plist;
+				INFOPLIST_FILE = "$(UD_BASE_APP_NAME)/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "$(UD_APP_NAME)";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "$(PRODUCT_NAME) requires Locations to be enabled for tracking current location.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "$(PRODUCT_NAME) requires Locations to be enabled for tracking current location.";
@@ -692,7 +692,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = BaseApp/Info.plist;
+				INFOPLIST_FILE = "$(UD_BASE_APP_NAME)/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "$(UD_APP_NAME)";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "$(PRODUCT_NAME) requires Locations to be enabled for tracking current location.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "$(PRODUCT_NAME) requires Locations to be enabled for tracking current location.";
