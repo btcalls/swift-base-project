@@ -10,6 +10,7 @@ import Foundation
 
 enum CustomError: LocalizedError {
     case network(NetworkResponse)
+    case app(AppResponse)
     case custom(String)
 }
 
@@ -27,6 +28,10 @@ enum NetworkResponse: String {
     case decodeError = "Could not decode response."
 }
 
+enum AppResponse: String {
+    case appOpenError = "App cannot open specified URL."
+}
+
 enum PermissionType: String {
     case notifications = "Notifications capability is required to receive latest updates."
     case location = "Locations capability is required to keep track of current location."
@@ -39,6 +44,8 @@ extension CustomError {
         case .network(let message):
             return NSLocalizedString(message.rawValue, comment: "Network Error")
 
+        case .app(let message):
+            return NSLocalizedString(message.rawValue, comment: "App Error")
 
         case .custom(let message):
             return NSLocalizedString(message, comment: "Error")

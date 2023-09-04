@@ -136,13 +136,6 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
-		A966676F275F4F0800B8B2B8 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		A96FF78C2759EA73000E139E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -220,7 +213,6 @@
 				A96FF78C2759EA73000E139E /* Resources */,
 				A92D56FD275DF5AA0032F1C1 /* Scenes */,
 				A96FF7922759FEE0000E139E /* Utils */,
-				A966676F275F4F0800B8B2B8 /* Views */,
 			);
 			path = BaseApp;
 			sourceTree = "<group>";

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewModel: FormViewModel {
+final class LoginViewModel: FormViewModel {
 
     typealias FormParams = LoginRequest
 

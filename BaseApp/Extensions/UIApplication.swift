@@ -10,14 +10,18 @@ import UIKit
 
 extension UIApplication {
 
-    func open(_ urlString: String) {
+    func open(_ urlString: String) throws {
+        let error: CustomError = .app(.appOpenError)
+        
         guard let url = URL(string: urlString) else {
-            return
+            throw error
         }
 
-        if canOpenURL(url) {
-            open(url, options: [:], completionHandler: nil)
+        guard canOpenURL(url) else {
+            throw error
         }
+        
+        open(url, options: [:], completionHandler: nil)
     }
 
 }

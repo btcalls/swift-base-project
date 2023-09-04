@@ -25,14 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        PushNotificationsManager.shared.configure()
 //        LocationManager.shared.configure()
 
+        // TODO: Change when needed
+        let needsAuth = false
+        
         // Root view controller
-        var vc: UIViewController = R.storyboard.login.instantiateInitialViewController()!
-
-        if APIClient.shared.isAuthenticated {
-            vc = R.storyboard.main.instantiateInitialViewController()!
-        }
-
-        window?.rootViewController = vc
+        window?.rootViewController = getRootViewController(needsAuth)
 
         window?.makeKeyAndVisible()
 
@@ -44,6 +41,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
     ) {
         PushNotificationsManager.shared.register(token: deviceToken)
+    }
+    
+    private func getRootViewController(_ needsAuth: Bool) -> UIViewController {
+        let vc: UIViewController = R.storyboard.main.instantiateInitialViewController()!
+
+        guard needsAuth else {
+            return vc
+        }
+        
+        if APIClient.shared.isAuthenticated {
+            return vc
+        }
+        
+        return R.storyboard.login.instantiateInitialViewController()!
     }
 
 }
@@ -77,7 +88,7 @@ extension AppDelegate {
         let alert = UIAlertController(title: nil,
                                       message: message,
                                       preferredStyle: .alert)
-        let indicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        let indicator = UIActivityIndicatorView(frame: .init(x: 10, y: 5, width: 50, height: 50))
         indicator.hidesWhenStopped = true
         indicator.style = .gray
 
@@ -91,12 +102,15 @@ extension AppDelegate {
     /// Hide loader to stop process.
     /// - Parameter completion: Optional. Handler called when animation is completed.
     func hideLoader(_ completion: (() -> Void)? = nil) {
-        if let loader = loader {
-            loader.dismiss(animated: true) { [weak self] in
-                self?.loader = nil
+        guard let loader = loader else {
+            completion?()
+            return
+        }
+        
+        loader.dismiss(animated: true) { [weak self] in
+            self?.loader = nil
 
-                completion?()
-            }
+            completion?()
         }
     }
 

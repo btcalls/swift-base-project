@@ -42,7 +42,11 @@ extension CapabilityManager {
 
         alert.addAction(.init(title: "Close", style: .cancel))
         alert.addAction(.init(title: "Open Settings", style: .default, handler: { _ in
-            UIApplication.shared.open(UIApplication.openSettingsURLString)
+            do {
+                try UIApplication.shared.open(UIApplication.openSettingsURLString)
+            } catch {
+                ViewPresenter.presentAlert(.error(error as! CustomError))
+            }
         }))
 
         ViewPresenter.present(alert: alert)

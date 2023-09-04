@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+final class MainViewController: UIViewController {
 
     @IBAction private func onLogoutClick(_ sender: Any) {
         AppDelegate.shared.logout()

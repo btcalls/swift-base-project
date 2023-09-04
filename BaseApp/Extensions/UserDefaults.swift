@@ -21,12 +21,10 @@ extension UserDefaults {
 
     func set(_ value: Any, forKey key: Keys) {
         set(value, forKey: key.rawValue)
-        synchronize()
     }
 
     func remove(_ key: Keys) {
         removeObject(forKey: key.rawValue)
-        synchronize()
     }
 
     func getCodable<T: Codable>(_ key: Keys) -> T? {
@@ -43,7 +41,6 @@ extension UserDefaults {
         }
 
         set(data, forKey: key.rawValue)
-        synchronize()
     }
 
 }

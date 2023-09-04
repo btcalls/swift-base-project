@@ -13,7 +13,7 @@ enum HTTPMethod {
     case post(FormEncodable?)
 }
 
-class APIClient: NSObject {
+final class APIClient: NSObject {
 
     static let shared: APIClient = APIClient()
 

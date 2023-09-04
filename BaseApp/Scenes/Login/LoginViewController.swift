@@ -7,11 +7,15 @@
 
 import UIKit
 
-class LoginViewController: UIViewController, ViewModelController {
+final class LoginViewController: UIViewController, ViewModelController {
 
     typealias ViewModel = LoginViewModel
 
-    var viewModel: LoginViewModel = LoginViewModel()
+    var viewModel: LoginViewModel = LoginViewModel() {
+        didSet {
+            viewModel.delegate = self
+        }
+    }
 
     @IBAction private func onLoginClick(_ sender: Any) {
         viewModel.submitForm(.testParams)
@@ -20,8 +24,6 @@ class LoginViewController: UIViewController, ViewModelController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-
-        viewModel.delegate = self
     }
     
 }

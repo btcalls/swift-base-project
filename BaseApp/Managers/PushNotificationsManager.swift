@@ -37,7 +37,7 @@ private struct Payload: Codable {
 
 }
 
-class PushNotificationsManager: NSObject, CapabilityManager {
+final class PushNotificationsManager: NSObject, CapabilityManager {
 
     static let shared = PushNotificationsManager()
 

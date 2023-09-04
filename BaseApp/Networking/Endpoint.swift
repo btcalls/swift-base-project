@@ -13,7 +13,7 @@ import Foundation
 struct Endpoint {
 
     var path: String
-    var queryItems: [URLQueryItem] = []
+    var queryItems: [URLQueryItem]?
     var isAuthenticated: Bool = true
 
 }
@@ -26,11 +26,8 @@ extension Endpoint {
 
         var components = URLComponents(string: Bundle.main.baseURL)!
         components.path = "\(basePath)\(path)"
-
-        if !queryItems.isEmpty {
-            components.queryItems = queryItems
-        }
-
+        components.queryItems = queryItems
+        
         guard let url = components.url else {
             preconditionFailure("Invalid URL components: \(components)")
         }
