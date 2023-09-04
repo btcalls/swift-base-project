@@ -13,6 +13,11 @@ extension Bundle {
 
     // MARK: User-Defined Build Settings
 
+    var apiKey: String {
+        let value = object(forInfoDictionaryKey: "CONFIG_API_KEY") as! String
+
+        return value.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
     var appName: String {
         let value = object(forInfoDictionaryKey: "CFBundleDisplayName") as! String
 

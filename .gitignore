@@ -9,6 +9,10 @@ Debug.plist
 QA.plist
 Release.plist
 
+DebugConfig.xcconfig
+QAConfig.xcconfig
+ReleaseConfig.xcconfig
+
 *.bak
 
 fastlane/README.md

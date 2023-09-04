@@ -26,11 +26,14 @@ This codebase is already configured with three environments - `Dev`, `QA`, and `
 
 The env-specific variables are declared in the `Build Settings` under `User-Defined`. These are keys that starts with `UD_` to specifically distinguish it with its other settings. Some of its values are dependent with the others, for example, `UD_APP_NAME` is declared as `$(UD_BASE_APP_NAME)$(UD_APP_SUFFIX)`. Update the values accordingly to your project's needs.
 
-For sensitive values (access tokens, etc.), you may want to implement the approach of copying an environment's corresponding `.plist` file on runtine.
+For sensitive values (access tokens, etc.), do the ff:
+* In `/Configs` folder, you will find `Config.xcconfig` file, containing a sample variable `CONFIG_API_KEY` as reference.
+* Create three new `.xcconfig` files corresponding to the three environment builds available, `Debug`, `QA`, and `Release`. Add variables as needed, prefixed with `CONFIG_`. **NOTE:** Make sure that during file creation, no target is selected.
+* In ***Project Settings -> Configurations***, set the created config files corresponding to its Configuration. 
 
-To access these user-defined settings in the app:
+To access these user-defined settings and env-specific configuration variables in the app:
 * Declare the keys and values in your `Info.plist` file.
-* In `Bundle` extension, you will see some variable declared for retrieving said values from `Info.plist`.
+* In `Bundle` extension, you will see some variables declared for retrieving said values from `Info.plist`.
 * Add/Update accordingly.
 
 ## How to use the codebase
@@ -46,7 +49,7 @@ Also under `url`, update `basePath` accordingly.
 This is where you will declare all codable structs related to API requests and responses. A base codable is already provided for reference.
 
 #### APIResponseDecodable
-Protocol declared for the base API response shared across all endpoints. Conform structs to be added to this protocol (see `BaseAPIResponse`).
+Protocol declared for the base API response shared across all endpoints (see `BaseAPIResponse`).
 
 #### LoginRequest
 Codable used to pass the body payload to the login endpoint. A static variable has already been provided to be used for testing purposes, as seen in `LoginViewController`.

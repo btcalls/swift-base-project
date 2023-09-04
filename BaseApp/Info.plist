@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CONFIG_API_KEY</key>
+	<string>$(CONFIG_API_KEY)</string>
 	<key>UD_BASE_URL</key>
 	<string>$(UD_BASE_URL)</string>
 	<key>UD_DISPLAY_APP_VERSION</key>
