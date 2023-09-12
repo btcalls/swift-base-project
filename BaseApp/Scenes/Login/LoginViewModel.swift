@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import Combine
 
 final class LoginViewModel: FormViewModel {
 
     typealias FormParams = LoginBody
 
     var delegate: ViewModelDelegate?
+    
+    private var cancellable = Set<AnyCancellable>()
 
     func isFormValid(_ params: LoginBody) -> FormViewModelResponse {
         if params.userName.isEmpty {
@@ -40,8 +43,7 @@ final class LoginViewModel: FormViewModel {
 
     private func login(with params: LoginBody) {
         AppDelegate.shared.showLoader()
-        
-        let _ = APIClient.shared.send(LoginRequest(method: .post(params)))
+        APIClient.shared.send(LoginRequest(method: .post(params)))
             .sink { [weak self] completion in
                 switch completion {
                 case .finished:
@@ -53,6 +55,7 @@ final class LoginViewModel: FormViewModel {
             } receiveValue: { response in
                 Debugger.print(response)
             }
+            .store(in: &cancellable)
 
     }
 

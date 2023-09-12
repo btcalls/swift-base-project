@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        LocationManager.shared.configure()
 
         // TODO: Change when needed
-        let needsAuth = false
+        let needsAuth = true
         
         // Root view controller
         window?.rootViewController = getRootViewController(needsAuth)
@@ -44,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func getRootViewController(_ needsAuth: Bool) -> UIViewController {
-        let vc: UIViewController = R.storyboard.main.instantiateInitialViewController()!
+        let vc: UIViewController = R.storyboard.home.instantiateInitialViewController()!
 
         guard needsAuth else {
             return vc

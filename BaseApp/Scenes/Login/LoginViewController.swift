@@ -31,7 +31,7 @@ final class LoginViewController: UIViewController, ViewModelController {
 extension LoginViewController: ViewModelDelegate {
 
     func onSuccess() {
-        performSegue(withIdentifier: R.segue.loginViewController.main,
+        performSegue(withIdentifier: R.segue.loginViewController.home,
                      sender: nil)
     }
 
