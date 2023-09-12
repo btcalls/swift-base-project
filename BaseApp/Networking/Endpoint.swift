@@ -21,8 +21,7 @@ struct Endpoint {
 extension Endpoint {
 
     var url: URL {
-        // TODO: Update `basePath`
-        let basePath = ""
+        let basePath = "/v1/public"
 
         var components = URLComponents(string: Bundle.main.baseURL)!
         components.path = "\(basePath)\(path)"
@@ -44,17 +43,6 @@ extension Endpoint {
         }
 
         return values
-    }
-
-}
-
-// MARK: Constants
-
-// TODO: Declare endpoints here
-extension Endpoint {
-    
-    static var login: Self {
-        return Endpoint(path: "/login")
     }
 
 }

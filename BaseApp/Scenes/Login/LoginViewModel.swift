@@ -10,11 +10,11 @@ import UIKit
 
 final class LoginViewModel: FormViewModel {
 
-    typealias FormParams = LoginRequest
+    typealias FormParams = LoginBody
 
     var delegate: ViewModelDelegate?
 
-    func isFormValid(_ params: LoginRequest) -> FormViewModelResponse {
+    func isFormValid(_ params: LoginBody) -> FormViewModelResponse {
         if params.userName.isEmpty {
             return .error(message: "Username is required.")
         }
@@ -26,7 +26,7 @@ final class LoginViewModel: FormViewModel {
         return .success
     }
 
-    func submitForm(_ params: LoginRequest) {
+    func submitForm(_ params: LoginBody) {
         let status = isFormValid(params)
 
         switch status {
@@ -38,22 +38,22 @@ final class LoginViewModel: FormViewModel {
         }
     }
 
-    private func login(with params: LoginRequest) {
+    private func login(with params: LoginBody) {
         AppDelegate.shared.showLoader()
-        APIClient.shared.request(
-            to: .login,
-            method: .post(params),
-            responseType: LoginResponse.self
-        ) { [weak self] result in
-            switch result {
-            case .success(_):
-                // TODO: Store tokens, etc.
-                self?.delegate?.onSuccess()
+        
+        let _ = APIClient.shared.send(LoginRequest(method: .post(params)))
+            .sink { [weak self] completion in
+                switch completion {
+                case .finished:
+                    self?.delegate?.onSuccess()
 
-            case .failure(let error):
-                self?.delegate?.onError(error)
+                case .failure(_):
+                    self?.delegate?.onError(.custom("Error"))
+                }
+            } receiveValue: { response in
+                Debugger.print(response)
             }
-        }
+
     }
 
 }

@@ -11,19 +11,13 @@ import UIKit
 extension UIWindow {
 
     static var key: UIWindow? {
-        if #available(iOS 15, *) {
-            return UIApplication
-                .shared
-                .connectedScenes
-                .flatMap { ($0 as? UIWindowScene)?.windows ?? [] }
-                .first(where: \.isKeyWindow)
-        }
-
-        if #available(iOS 13, *) {
-            return UIApplication.shared.windows.first(where: \.isKeyWindow)
-        }
-
-        return UIApplication.shared.keyWindow
+        return UIApplication.shared.connectedScenes
+            .filter({ $0.activationState == .foregroundActive })
+            .compactMap({ $0 as? UIWindowScene })
+            .first?
+            .windows
+            .filter({ $0.isKeyWindow })
+            .first
     }
     
 }

@@ -18,6 +18,11 @@ extension Bundle {
 
         return value.trimmingCharacters(in: .whitespacesAndNewlines)
     }
+    var apiPrivateKey: String {
+        let value = object(forInfoDictionaryKey: "CONFIG_API_PRIVATE_KEY") as! String
+
+        return value.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
     var appName: String {
         let value = object(forInfoDictionaryKey: "CFBundleDisplayName") as! String
 

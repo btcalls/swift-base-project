@@ -8,9 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		2912E8D1379864B0E4B0F08D /* Pods_BaseApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 500D52534CCF8157113DF5A6 /* Pods_BaseApp.framework */; };
+		49B0A10A2AA5D3D10037001F /* HomeCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B0A1092AA5D3D10037001F /* HomeCodable.swift */; };
+		49B0A10C2AA5E5130037001F /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B0A10B2AA5E5130037001F /* String.swift */; };
+		49B9115B2AB05F4E003609B3 /* UIWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B9115A2AB05F4E003609B3 /* UIWindow.swift */; };
 		A92D56FB275DBC460032F1C1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92D56FA275DBC460032F1C1 /* Constants.swift */; };
 		A92D5701275DF6B00032F1C1 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92D5700275DF6B00032F1C1 /* Protocols.swift */; };
-		A94AA80D275EF6BB0024C01F /* UIWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94AA80C275EF6BB0024C01F /* UIWindow.swift */; };
 		A94AA810275F0A410024C01F /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94AA80F275F0A410024C01F /* R.generated.swift */; };
 		A94AA812275F250A0024C01F /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94AA811275F250A0024C01F /* UIViewController.swift */; };
 		A94AA815275F26AD0024C01F /* PushNotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94AA814275F26AD0024C01F /* PushNotificationsManager.swift */; };
@@ -41,10 +43,13 @@
 /* Begin PBXFileReference section */
 		2F6125B89A75A3F1C579CD7C /* Pods-ChatApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatApp.release.xcconfig"; path = "Target Support Files/Pods-ChatApp/Pods-ChatApp.release.xcconfig"; sourceTree = "<group>"; };
 		49B0A1062AA57E460037001F /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		49B0A1082AA5D11B0037001F /* DebugConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DebugConfig.xcconfig; sourceTree = "<group>"; };
+		49B0A1092AA5D3D10037001F /* HomeCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCodable.swift; sourceTree = "<group>"; };
+		49B0A10B2AA5E5130037001F /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		49B9115A2AB05F4E003609B3 /* UIWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWindow.swift; sourceTree = "<group>"; };
 		500D52534CCF8157113DF5A6 /* Pods_BaseApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BaseApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A92D56FA275DBC460032F1C1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A92D5700275DF6B00032F1C1 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
-		A94AA80C275EF6BB0024C01F /* UIWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWindow.swift; sourceTree = "<group>"; };
 		A94AA80F275F0A410024C01F /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		A94AA811275F250A0024C01F /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		A94AA814275F26AD0024C01F /* PushNotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationsManager.swift; sourceTree = "<group>"; };
@@ -95,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				49B0A1062AA57E460037001F /* Config.xcconfig */,
+				49B0A1082AA5D11B0037001F /* DebugConfig.xcconfig */,
 			);
 			path = Configs;
 			sourceTree = "<group>";
@@ -123,6 +129,7 @@
 			children = (
 				A9A15DD7275B4AD100F01F84 /* AuthCodable.swift */,
 				A9A15DD9275B4C0100F01F84 /* BaseCodable.swift */,
+				49B0A1092AA5D3D10037001F /* HomeCodable.swift */,
 			);
 			path = Codables;
 			sourceTree = "<group>";
@@ -152,10 +159,11 @@
 				A9A15DD3275B412D00F01F84 /* Data.swift */,
 				A96FF7A2275A1FE2000E139E /* Dictionary.swift */,
 				A9A15DCF275B134200F01F84 /* JSON.swift */,
+				49B0A10B2AA5E5130037001F /* String.swift */,
 				A96FF797275A011B000E139E /* UIApplication.swift */,
 				A96FF7952759FFD3000E139E /* UIDevice.swift */,
 				A94AA811275F250A0024C01F /* UIViewController.swift */,
-				A94AA80C275EF6BB0024C01F /* UIWindow.swift */,
+				49B9115A2AB05F4E003609B3 /* UIWindow.swift */,
 				A96FF7902759F811000E139E /* UserDefaults.swift */,
 			);
 			path = Extensions;
@@ -393,17 +401,19 @@
 				A9A15DD2275B40A200F01F84 /* Codable.swift in Sources */,
 				A96FF7A1275A16AB000E139E /* Endpoint.swift in Sources */,
 				A98157A3275E30EF007383C1 /* LoginViewModel.swift in Sources */,
-				A94AA80D275EF6BB0024C01F /* UIWindow.swift in Sources */,
 				A94AA810275F0A410024C01F /* R.generated.swift in Sources */,
 				A96FF7A3275A1FE3000E139E /* Dictionary.swift in Sources */,
 				A96FF79A275A0535000E139E /* Bundle.swift in Sources */,
 				A92D56FB275DBC460032F1C1 /* Constants.swift in Sources */,
 				A94AA815275F26AD0024C01F /* PushNotificationsManager.swift in Sources */,
 				A96FF7962759FFD3000E139E /* UIDevice.swift in Sources */,
+				49B0A10C2AA5E5130037001F /* String.swift in Sources */,
 				A9A15DDA275B4C0100F01F84 /* BaseCodable.swift in Sources */,
 				A94AA812275F250A0024C01F /* UIViewController.swift in Sources */,
 				A97074322759E3D800302141 /* LoginViewController.swift in Sources */,
+				49B9115B2AB05F4E003609B3 /* UIWindow.swift in Sources */,
 				A9A15DD4275B412D00F01F84 /* Data.swift in Sources */,
+				49B0A10A2AA5D3D10037001F /* HomeCodable.swift in Sources */,
 				A96FF79F275A13C7000E139E /* APIClient.swift in Sources */,
 				A970742E2759E3D800302141 /* AppDelegate.swift in Sources */,
 				A94AA817275F2B140024C01F /* LocationManager.swift in Sources */,
@@ -486,7 +496,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -528,6 +538,7 @@
 				UD_APP_NAME = "$(UD_BASE_APP_NAME)$(UD_APP_SUFFIX)";
 				UD_APP_SUFFIX = QA;
 				UD_BASE_APP_NAME = BaseApp;
+				UD_BASE_URL = "https://gateway.marvel.com:443";
 				UD_DISPLAY_APP_VERSION = "v$(MARKETING_VERSION)-QA";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -535,6 +546,7 @@
 		};
 		A970743C2759E3DC00302141 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 49B0A1082AA5D11B0037001F /* DebugConfig.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -584,7 +596,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -639,7 +651,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -680,6 +692,7 @@
 				UD_APP_NAME = "$(UD_BASE_APP_NAME)$(UD_APP_SUFFIX)";
 				UD_APP_SUFFIX = Dev;
 				UD_BASE_APP_NAME = BaseApp;
+				UD_BASE_URL = "https://gateway.marvel.com:443";
 				UD_DISPLAY_APP_VERSION = "v$(MARKETING_VERSION)-dev";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -716,6 +729,7 @@
 				UD_APP_NAME = "$(UD_BASE_APP_NAME)$(UD_APP_SUFFIX)";
 				UD_APP_SUFFIX = "";
 				UD_BASE_APP_NAME = BaseApp;
+				UD_BASE_URL = "https://gateway.marvel.com:443";
 				UD_DISPLAY_APP_VERSION = "v$(MARKETING_VERSION)";
 				VERSIONING_SYSTEM = "apple-generic";
 			};

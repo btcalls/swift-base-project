@@ -90,7 +90,7 @@ extension AppDelegate {
                                       preferredStyle: .alert)
         let indicator = UIActivityIndicatorView(frame: .init(x: 10, y: 5, width: 50, height: 50))
         indicator.hidesWhenStopped = true
-        indicator.style = .gray
+        indicator.style = .medium
 
         loader = alert
         

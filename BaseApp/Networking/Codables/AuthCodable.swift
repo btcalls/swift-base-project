@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct LoginRequest: FormEncodable {
+struct LoginBody: FormEncodable {
 
     var password: String
     var userName: String
@@ -23,5 +23,22 @@ struct LoginRequest: FormEncodable {
 struct LoginResponse: APIResponseDecodable {
 
     // TODO: Update accordingly
+
+}
+
+struct LoginRequest: APIRequest {
+    
+    typealias Response = LoginResponse
+    
+    var endpoint: Endpoint = .login
+    var method: HTTPMethod
+    
+}
+
+extension Endpoint {
+    
+    static var login: Self {
+        return Endpoint(path: "/login")
+    }
 
 }
