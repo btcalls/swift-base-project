@@ -46,6 +46,7 @@ final class APIClient: NSObject {
                 return data
             }
             .decode(type: T.Response.self, decoder: JSONDecoder())
+            .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }
     
@@ -76,9 +77,6 @@ final class APIClient: NSObject {
         Debugger.print(endpoint.url.absoluteString)
         
         switch request.method {
-        case .get:
-            urlRequest.httpMethod = "GET"
-
         case .post(let encodable):
             urlRequest.httpMethod = "POST"
 
@@ -89,6 +87,9 @@ final class APIClient: NSObject {
 
                 urlRequest.httpBody = httpBody
             }
+            
+        default:
+            break
         }
 
         // Headers

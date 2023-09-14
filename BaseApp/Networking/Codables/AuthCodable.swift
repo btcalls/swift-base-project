@@ -22,7 +22,9 @@ struct LoginBody: FormEncodable {
 
 struct LoginResponse: APIResponseDecodable {
 
-    // TODO: Update accordingly
+    // NOTE: Sample
+    var token: String
+    var email: String
 
 }
 

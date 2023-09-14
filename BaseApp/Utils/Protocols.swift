@@ -8,6 +8,11 @@
 
 import Foundation
 import UIKit
+import Combine
+
+// MARK: - Typealiases
+
+typealias FormKeyPathDict<T: FormEncodable> = [KeyPath<T, String>: String]
 
 // MARK: Cells
 
@@ -56,31 +61,34 @@ extension CapabilityManager {
 
 // MARK: View Controllers
 
+/// Protocol used for implementing a view controller with an associated form view model.
+protocol FormViewModelController {
+    
+    associatedtype VM where VM: FormViewModel
+
+    var viewModel: VM { get set }
+    
+}
+
 /// Protocol used for implementing a view controller with an associated view model.
 protocol ViewModelController {
 
-    associatedtype ViewModel
+    associatedtype VM where VM: ViewModel
 
-    var viewModel: ViewModel { get set }
+    var viewModel: VM { get set }
 
 }
 
 // MARK: View Models
 
-enum FormViewModelResponse {
-    case success
-    case error(message: String)
-}
-
 /// Protocol for implementing a view model with form-related functionalities.
 protocol FormViewModel {
 
-    associatedtype FormParams
+    associatedtype Params
+    associatedtype Response where Response: APIResponseDecodable
 
-    var delegate: ViewModelDelegate? { get set }
-
-    func isFormValid(_ params: FormParams) -> FormViewModelResponse
-    func submitForm(_ params: FormParams)
+    func isFormValid(_ params: Params) -> Bool
+    func submitForm(_ params: Params) -> AnyPublisher<Response, Error>
 
 }
 

@@ -10,53 +10,32 @@ import UIKit
 import Combine
 
 final class LoginViewModel: FormViewModel {
-
-    typealias FormParams = LoginBody
-
-    var delegate: ViewModelDelegate?
     
-    private var cancellable = Set<AnyCancellable>()
+    typealias Params = LoginBody
+    typealias Response = LoginRequest.Response
+    
+    @Published var formErrors: FormKeyPathDict<LoginBody> = [:]
+    
+    private var cancellables = Set<AnyCancellable>()
 
-    func isFormValid(_ params: LoginBody) -> FormViewModelResponse {
+    func isFormValid(_ params: LoginBody) -> Bool {
+        var errors: FormKeyPathDict<LoginBody> = [:]
+        
         if params.userName.isEmpty {
-            return .error(message: "Username is required.")
+            errors[\.userName] = "Username is required."
         }
 
         if params.password.isEmpty {
-            return .error(message: "Password is required.")
+            errors[\.password] = "Password is required."
         }
+        
+        formErrors = errors
 
-        return .success
+        return errors.isEmpty
     }
 
-    func submitForm(_ params: LoginBody) {
-        let status = isFormValid(params)
-
-        switch status {
-        case .success:
-            login(with: params)
-
-        case .error(let message):
-            ViewPresenter.presentAlert(.custom(title: "", message: message))
-        }
-    }
-
-    private func login(with params: LoginBody) {
-        AppDelegate.shared.showLoader()
-        APIClient.shared.send(LoginRequest(method: .post(params)))
-            .sink { [weak self] completion in
-                switch completion {
-                case .finished:
-                    self?.delegate?.onSuccess()
-
-                case .failure(_):
-                    self?.delegate?.onError(.custom("Error"))
-                }
-            } receiveValue: { response in
-                Debugger.print(response)
-            }
-            .store(in: &cancellable)
-
+    func submitForm(_ params: LoginBody) -> AnyPublisher<LoginRequest.Response, Error> {
+        return APIClient.shared.send(LoginRequest(method: .post(params)))
     }
 
 }

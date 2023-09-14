@@ -17,23 +17,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bxj-wf-YAo">
-                                <rect key="frame" x="177" y="432.5" width="60" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Login"/>
-                                <connections>
-                                    <action selector="onLoginClick:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="FZq-7i-D91"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="tLw-Df-Con">
+                                <rect key="frame" x="16" y="323" width="382" height="170"/>
+                                <subviews>
+                                    <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khF-p4-fa7">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="50"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hv1-Mx-qYb">
+                                        <rect key="frame" x="0.0" y="60" width="382" height="50"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bxj-wf-YAo">
+                                        <rect key="frame" x="0.0" y="120" width="382" height="50"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Login"/>
+                                        <connections>
+                                            <action selector="onLoginClick:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="FZq-7i-D91"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="bxj-wf-YAo" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="8sy-qB-ilG"/>
-                            <constraint firstItem="bxj-wf-YAo" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Sz6-DV-NUx"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="tLw-Df-Con" secondAttribute="trailing" constant="16" id="6rq-ed-buX"/>
+                            <constraint firstItem="tLw-Df-Con" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="an9-Ut-Vu4"/>
+                            <constraint firstItem="tLw-Df-Con" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" constant="-40" id="jbw-bi-8dp"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="passwordLabel" destination="hv1-Mx-qYb" id="aSA-xe-TOe"/>
+                        <outlet property="usernameLabel" destination="khF-p4-fa7" id="GRr-Oh-cp9"/>
                         <segue destination="kCC-On-PuF" kind="showDetail" identifier="Home" id="Ahh-Qc-gIp"/>
                     </connections>
                 </viewController>
