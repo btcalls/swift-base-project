@@ -21,8 +21,8 @@ final class LoginViewModel: FormViewModel {
     func isFormValid(_ params: LoginBody) -> Bool {
         var errors: FormKeyPathDict<LoginBody> = [:]
         
-        if params.userName.isEmpty {
-            errors[\.userName] = "Username is required."
+        if params.username.isEmpty {
+            errors[\.username] = "Username is required."
         }
 
         if params.password.isEmpty {

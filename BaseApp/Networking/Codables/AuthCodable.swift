@@ -9,13 +9,13 @@
 import Foundation
 
 struct LoginBody: FormEncodable {
-
+    
+    var username: String
     var password: String
-    var userName: String
 
     // TODO: Enter test creds here
     static var testParams: Self {
-        return .init(password: "xxx", userName: "xxx")
+        return .init(username: "xxx", password: "xxx")
     }
 
 }

@@ -16,12 +16,14 @@ final class LoginViewController: UIViewController, FormViewModelController {
     
     var viewModel: LoginViewModel = LoginViewModel()
     
-    @IBOutlet private weak var usernameLabel: UILabel!
-    @IBOutlet private weak var passwordLabel: UILabel!
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var passwordLabel: UILabel!
 
     @IBAction private func onLoginClick(_ sender: Any) {
-        let params: LoginViewModel.Params = .init(password: "asd",
-                                                  userName: "")
+        let params: LoginViewModel.Params = .init(username: usernameTextField.text ?? "",
+                                                  password: passwordTextField.text ?? "")
         
         guard viewModel.isFormValid(params) else {
             return
@@ -61,7 +63,7 @@ extension LoginViewController {
     private func subscribeToForm() {
         viewModel.$formErrors
             .sink { [weak self] errors in
-                self?.usernameLabel.text = errors[\.userName]
+                self?.usernameLabel.text = errors[\.username]
                 self?.passwordLabel.text = errors[\.password]
             }
             .store(in: &cancellables)
