@@ -44,7 +44,7 @@ extension JSONDecoder.KeyDecodingStrategy {
 
 extension JSONEncoder.KeyEncodingStrategy {
 
-    static var toUpperCamelCase: JSONEncoder.KeyEncodingStrategy {
+    static var convertToUpperCamelCase: JSONEncoder.KeyEncodingStrategy {
         return .custom { (keys) -> CodingKey in
             let key = keys.last!
 

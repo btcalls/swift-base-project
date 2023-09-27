@@ -12,10 +12,14 @@ import Combine
 
 // MARK: - Typealiases
 
+/// Typealias for a dictionary in which its key is derived from properties of another encodable object.
+///
+/// Used for declaring dictionary of errors corresponding to the encodable properties.
 typealias FormKeyPathDict<T: FormEncodable> = [KeyPath<T, String>: String]
 
 // MARK: Cells
 
+/// Protocol to be conformed by UITableViewCell instances in which contents are derived from objects.
 protocol ConfigurableCell {
 
     associatedtype T
@@ -26,6 +30,7 @@ protocol ConfigurableCell {
 
 // MARK: Managers
 
+/// Protocol to be implemented by manager instances corresponding to a capability (e.g. Push Notifications, Location).
 protocol CapabilityManager {
 
     /// Flag whether corresponding capability has been authorized for usage.
@@ -50,12 +55,31 @@ extension CapabilityManager {
             do {
                 try UIApplication.shared.open(UIApplication.openSettingsURLString)
             } catch {
-                ViewPresenter.presentAlert(.error(error as! CustomError))
+                ViewPresenter.presentAlert(.error(CustomError.error(error)))
             }
         }))
 
         ViewPresenter.present(alert: alert)
     }
+
+}
+
+// MARK: - API
+
+/// Protocol for decodable instances used to encapsulate an API response.
+protocol APIResponseDecodable: Decodable {
+
+    // TODO: Add common response data properties
+
+}
+
+/// Protocol for decodable instances used to encapsulate an API response returning a list of data.
+protocol APIListResponseDecodable: APIResponseDecodable {
+
+    associatedtype Item where Item: Decodable
+    
+    var copyright: String { get } // NOTE: Marvel API-specific. Remove after.
+    var data: DataContainer<Item> { get }
 
 }
 
@@ -97,18 +121,14 @@ protocol ViewModel {
 
     associatedtype Value
 
+    /// Published property for data fetched by view model. Add @Published wrapper upon implementation.
     var data: Value { get set }
-    var delegate: ViewModelDelegate? { get set }
+    /// Published property for error received by view model. Add @Published wrapper upon implementation.
+    var error: CustomError? { get }
+    /// Published property for fetching state managed by view model. Add @Published wrapper upon implementation.
+    var isFetching: Bool { get set }
 
     func fetchData()
     func reloadData()
-
-}
-
-/// Protocol for capturing the state of a view model API request action.
-protocol ViewModelDelegate {
-
-    func onSuccess()
-    func onError(_ error: CustomError)
 
 }

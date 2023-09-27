@@ -11,12 +11,13 @@ import Foundation
 enum CustomError: LocalizedError {
     case network(NetworkResponse)
     case app(AppResponse)
+    case error(Error)
     case custom(String)
 }
 
 enum DialogType {
     case custom(title: String, message: String)
-    case error(CustomError)
+    case error(Error)
 }
 
 enum NetworkResponse: String {
@@ -46,7 +47,10 @@ extension CustomError {
 
         case .app(let message):
             return NSLocalizedString(message.rawValue, comment: "App Error")
-
+            
+        case .error(let error):
+            return NSLocalizedString(error.localizedDescription, comment: "Error")
+            
         case .custom(let message):
             return NSLocalizedString(message, comment: "Error")
         }

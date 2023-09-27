@@ -27,6 +27,7 @@ final class LocationManager: NSObject, CapabilityManager {
         }
         set {}
     }
+    
     private var currentLocation: CLLocation?
     private var canAskForAuthorization: Bool {
         if #available(iOS 14.0, *) {

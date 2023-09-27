@@ -32,15 +32,7 @@ struct LoginRequest: APIRequest {
     
     typealias Response = LoginResponse
     
-    var endpoint: Endpoint = .login
+    var endpoint: Endpoint = .init(path: "/login")
     var method: HTTPMethod
     
-}
-
-extension Endpoint {
-    
-    static var login: Self {
-        return Endpoint(path: "/login")
-    }
-
 }

@@ -12,8 +12,19 @@ import Combine
 enum HTTPMethod {
     case get
     case post(FormEncodable?)
+    
+    var value: String {
+        switch self {
+        case .get:
+            return "GET"
+        
+        case .post(_):
+            return "POST"
+        }
+    }
 }
 
+/// Protocol for creating an API request instance consisting of its Endpoint, HTTP method, and type of Codable response.
 protocol APIRequest {
     
     associatedtype Response: APIResponseDecodable
@@ -28,27 +39,39 @@ final class APIClient: NSObject {
     static let shared: APIClient = APIClient()
 
     var isAuthenticated: Bool {
-        // TODO: Implement checking
-
-        return false
+        guard let _: String = UserDefaults.standard.get(.accessToken) else {
+            return false
+        }
+        
+        return true
     }
     
     func send<T: APIRequest>(_ request: T) -> AnyPublisher<T.Response, Error> {
         let urlRequest = getURLRequest(for: request)
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
         
         return URLSession.shared.dataTaskPublisher(for: urlRequest)
-            .mapError { CustomError.custom($0.localizedDescription) }
+            .mapError { CustomError.error($0) }
             .tryMap { [weak self] data , response -> Data in
                 if let error = self?.getHttpError(response) {
                     throw error
                 }
                 
+                if let json = try? data.toJSON() {
+                    Debugger.print(json)
+                }
+                
                 return data
             }
-            .decode(type: T.Response.self, decoder: JSONDecoder())
+            .decode(type: T.Response.self, decoder: decoder)
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }
+    
+}
+
+extension APIClient {
     
     private func getHttpError(_ response: URLResponse?) -> CustomError? {
         guard let response = response as? HTTPURLResponse else {
@@ -73,13 +96,12 @@ final class APIClient: NSObject {
     private func getURLRequest<T: APIRequest>(for request: T) -> URLRequest {
         let endpoint = request.endpoint
         var urlRequest = URLRequest(url: endpoint.url)
+        urlRequest.httpMethod = request.method.value
         
         Debugger.print(endpoint.url.absoluteString)
         
         switch request.method {
         case .post(let encodable):
-            urlRequest.httpMethod = "POST"
-
             if let httpBody = try? encodable?.toJSONData() {
                 if let json = try? httpBody.toJSON() {
                     Debugger.print("Params: \(json)")

@@ -35,7 +35,7 @@ final class LoginViewController: UIViewController, FormViewModelController {
                 AppDelegate.shared.hideLoader {
                     switch completion {
                     case .failure(let error):
-                        ViewPresenter.presentAlert(.error(error as! CustomError))
+                        ViewPresenter.presentAlert(.error(error))
                         
                     case .finished:
                         self?.performSegue(withIdentifier: R.segue.loginViewController.home,

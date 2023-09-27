@@ -8,8 +8,6 @@
 
 import Foundation
 
-// MARK: Declaration
-
 struct Endpoint {
 
     var path: String
@@ -20,6 +18,18 @@ struct Endpoint {
 
 extension Endpoint {
 
+    // NOTE: Marvel API-specific. Remove after.
+    static var marvelAPIQueryItems: [URLQueryItem] {
+        let timestamp = Date().timeIntervalSince1970
+        let publicKey = Bundle.main.apiKey
+        let privateKey = Bundle.main.apiPrivateKey
+        let hash = "\(timestamp)\(privateKey)\(publicKey)".toMD5()
+        
+        return [.init(name: "ts", value: "\(timestamp)"),
+                .init(name: "apikey", value: publicKey),
+                .init(name: "hash", value: hash)]
+    }
+    
     var url: URL {
         let basePath = "/v1/public"
 

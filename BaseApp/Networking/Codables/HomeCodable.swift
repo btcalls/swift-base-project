@@ -8,33 +8,49 @@
 
 import Foundation
 
-struct GetCharactersResponse: APIResponseDecodable {
-
-    // TODO: Update accordingly
+// NOTE: Marvel API-specific. Remove after.
+struct GetCharactersResponse: APIListResponseDecodable {
+    
+    typealias Item = MarvelCharacter
+    
+    var copyright: String
+    var data: DataContainer<MarvelCharacter>
 
 }
 
+// NOTE: Marvel API-specific. Remove after.
 struct GetCharactersRequest: APIRequest {
     
     typealias Response = GetCharactersResponse
     
-    var endpoint: Endpoint = .getCharacters
+    var endpoint: Endpoint = .getCharacters()
     var method: HTTPMethod = .get
     
 }
 
+// NOTE: Marvel API-specific. Remove after.
+struct MarvelCharacter: Codable {
+    
+    var id: Int
+    var name: String
+    var description: String
+    var modified: Date
+    var events: ItemContainer
+    var series: ItemContainer
+    var comics: ItemContainer
+    @Thumbnail var thumbnail: URL?
+    
+}
+
+// NOTE: Marvel API-specific. Remove after.
 extension Endpoint {
     
-    static var getCharacters: Self {
-        let timestamp = Date().timeIntervalSince1970
-        let publicKey = Bundle.main.apiKey
-        let privateKey = Bundle.main.apiPrivateKey
-        let hash = "\(timestamp)\(privateKey)\(publicKey)".toMD5()
+    static func getCharacters(queryItems: [URLQueryItem] = []) -> Self {
+        var items = Self.marvelAPIQueryItems
         
-        return Endpoint(path: "/characters",
-                        queryItems: [.init(name: "ts", value: "\(timestamp)"),
-                                     .init(name: "apikey", value: publicKey),
-                                     .init(name: "hash", value: hash)])
+        items.append(contentsOf: queryItems)
+        
+        return Endpoint(path: "/characterssdfdf", queryItems: items)
     }
 
 }

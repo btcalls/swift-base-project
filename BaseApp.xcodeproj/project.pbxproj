@@ -10,7 +10,9 @@
 		2912E8D1379864B0E4B0F08D /* Pods_BaseApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 500D52534CCF8157113DF5A6 /* Pods_BaseApp.framework */; };
 		49B0A10A2AA5D3D10037001F /* HomeCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B0A1092AA5D3D10037001F /* HomeCodable.swift */; };
 		49B0A10C2AA5E5130037001F /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B0A10B2AA5E5130037001F /* String.swift */; };
+		49B1189D2AB6E6B900C54A3F /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B1189C2AB6E6B900C54A3F /* HomeViewModel.swift */; };
 		49B9115B2AB05F4E003609B3 /* UIWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B9115A2AB05F4E003609B3 /* UIWindow.swift */; };
+		49F506342AB98EFC00BF66FE /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F506332AB98EFC00BF66FE /* UIAlertController.swift */; };
 		A92D56FB275DBC460032F1C1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92D56FA275DBC460032F1C1 /* Constants.swift */; };
 		A92D5701275DF6B00032F1C1 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92D5700275DF6B00032F1C1 /* Protocols.swift */; };
 		A94AA810275F0A410024C01F /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94AA80F275F0A410024C01F /* R.generated.swift */; };
@@ -46,7 +48,9 @@
 		49B0A1082AA5D11B0037001F /* DebugConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DebugConfig.xcconfig; sourceTree = "<group>"; };
 		49B0A1092AA5D3D10037001F /* HomeCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCodable.swift; sourceTree = "<group>"; };
 		49B0A10B2AA5E5130037001F /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		49B1189C2AB6E6B900C54A3F /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		49B9115A2AB05F4E003609B3 /* UIWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWindow.swift; sourceTree = "<group>"; };
+		49F506332AB98EFC00BF66FE /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
 		500D52534CCF8157113DF5A6 /* Pods_BaseApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BaseApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A92D56FA275DBC460032F1C1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A92D5700275DF6B00032F1C1 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
@@ -165,6 +169,7 @@
 				A94AA811275F250A0024C01F /* UIViewController.swift */,
 				49B9115A2AB05F4E003609B3 /* UIWindow.swift */,
 				A96FF7902759F811000E139E /* UserDefaults.swift */,
+				49F506332AB98EFC00BF66FE /* UIAlertController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -230,6 +235,7 @@
 			children = (
 				A97074332759E3D800302141 /* Home.storyboard */,
 				A98157A7275E37F4007383C1 /* HomeViewController.swift */,
+				49B1189C2AB6E6B900C54A3F /* HomeViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -404,6 +410,7 @@
 				A94AA810275F0A410024C01F /* R.generated.swift in Sources */,
 				A96FF7A3275A1FE3000E139E /* Dictionary.swift in Sources */,
 				A96FF79A275A0535000E139E /* Bundle.swift in Sources */,
+				49B1189D2AB6E6B900C54A3F /* HomeViewModel.swift in Sources */,
 				A92D56FB275DBC460032F1C1 /* Constants.swift in Sources */,
 				A94AA815275F26AD0024C01F /* PushNotificationsManager.swift in Sources */,
 				A96FF7962759FFD3000E139E /* UIDevice.swift in Sources */,
@@ -417,6 +424,7 @@
 				A96FF79F275A13C7000E139E /* APIClient.swift in Sources */,
 				A970742E2759E3D800302141 /* AppDelegate.swift in Sources */,
 				A94AA817275F2B140024C01F /* LocationManager.swift in Sources */,
+				49F506342AB98EFC00BF66FE /* UIAlertController.swift in Sources */,
 				A96FF7942759FEFB000E139E /* Utils.swift in Sources */,
 				A92D5701275DF6B00032F1C1 /* Protocols.swift in Sources */,
 				A96FF7912759F811000E139E /* UserDefaults.swift in Sources */,

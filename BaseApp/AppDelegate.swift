@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        LocationManager.shared.configure()
 
         // TODO: Change when needed
-        let needsAuth = true
+        let needsAuth = false
         
         // Root view controller
         window?.rootViewController = getRootViewController(needsAuth)
@@ -82,21 +82,24 @@ extension AppDelegate {
 
     /// Show loader to signify ongoing process.
     /// - Parameter message: The title to display.
+    /// - Parameter root: Optional. The root UIViewController where to present the loader.
     /// - Parameter completion: Optional. Handler called when animation is completed.
     func showLoader(message: String = "Please wait...",
+                    root: UIViewController? = nil,
                     completion: (() -> Void)? = nil) {
-        let alert = UIAlertController(title: nil,
-                                      message: message,
-                                      preferredStyle: .alert)
-        let indicator = UIActivityIndicatorView(frame: .init(x: 10, y: 5, width: 50, height: 50))
-        indicator.hidesWhenStopped = true
-        indicator.style = .medium
-
-        loader = alert
+        loader = UIAlertController.loader(message: message, completion: completion)
         
-        indicator.startAnimating()
-        alert.view.addSubview(indicator)
-        ViewPresenter.present(alert: alert)
+        guard let loader = loader else {
+            return
+        }
+        
+        guard let root = root else {
+            ViewPresenter.present(alert: loader)
+            
+            return
+        }
+        
+        root.present(loader, animated: true)
     }
 
     /// Hide loader to stop process.
@@ -104,6 +107,7 @@ extension AppDelegate {
     func hideLoader(_ completion: (() -> Void)? = nil) {
         guard let loader = loader else {
             completion?()
+            
             return
         }
         
